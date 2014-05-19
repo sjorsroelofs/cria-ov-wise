@@ -1,11 +1,12 @@
 module.exports = function(app) {
 
     // TEST
-    app.get('/test', function(req, res) {
+    app.route('/test')
     
-        console.log('Arrived at test!');
-        return res.send({'test': true});
+        .get(function(req, res) {
+            return res.send({'test': true});
+        })
         
-    });
+    ;
 
 }

@@ -1,6 +1,5 @@
 var express = require('express'),
     fs = require('fs'),
-    http = require('http'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser');
 
@@ -27,6 +26,5 @@ app.set('port', process.env.PORT || config.port);
 app.use(express.static(__dirname + '../client/'));
 
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Server running on port ' + app.get('port'));
-});
+app.listen(app.get('port'));
+console.log('Server running on port ' + app.get('port'));
