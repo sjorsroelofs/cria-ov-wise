@@ -1,0 +1,13 @@
+module.exports = {
+    development: {
+        debugging: false,
+        db: 'mongodb://localhost/cria-ov-wise',
+        port: 43001
+    },
+    test: {
+        
+    },
+    production: {
+        
+    }
+}
