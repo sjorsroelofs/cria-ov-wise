@@ -1,0 +1,26 @@
+<h1>Nieuwe gebruiker toevoegen</h1><br/>
+
+<form name="userForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Gebruikersnaam:</td>
+                    <td><input type="text" data-ng-model="users.doc.username"></td>
+                </tr>
+                <tr>
+                    <td>Volledige naam:</td>
+                    <td><input type="text" data-ng-model="users.doc.realname"></td>
+                </tr>
+                <tr>
+                    <td>Wachtwoord:</td>
+                    <td><input type="text" data-ng-model="users.doc.password"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="save()" data-ng-disable="userForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>

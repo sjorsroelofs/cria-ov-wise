@@ -1,0 +1,36 @@
+<h1>Gebruikers</h1>
+
+<form name="userForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>ID:</td>
+                    <td><input type="text" data-ng-model="users.doc._id" readonly></td>
+                </tr>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" data-ng-model="users.doc.username"></td>
+                </tr>
+                <tr>
+                    <td>Realname:</td>
+                    <td><input type="text" data-ng-model="users.doc.realname"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="text" data-ng-model="users.doc.password"></td>
+                </tr>
+                <tr>
+                    <td>Registration date:</td>
+                    <td><input type="text" data-ng-model="users.doc.registrationDate"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="delete(users.doc._id)" class="btn btn-lg btn-danger">Delete</button>
+
+    <button type="button" data-ng-click="save()" data-ng-disable="userForm.$invalid" class="btn btn-primary btn-lg">Save</button>
+
+</form>

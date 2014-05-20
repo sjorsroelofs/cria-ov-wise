@@ -1,0 +1,8 @@
+<h1>Gebruikers</h1>
+
+<a href="/beheer/#/users/create" class="btn btn-sm btn-success">Nieuwe gebruiker toevoegen</a><br/><br/>
+<input class="form-control" ng-model="query" placeholder="Typ om te zoeken.."><br/>
+
+<ul class="list-group">
+    <a data-ng-repeat="user in users.doc | filter:query" class="list-group-item" href="/beheer/#/users/{{user._id}}">{{user.realname}}</a>
+</ul>
