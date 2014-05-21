@@ -1,30 +1,37 @@
-var mongoose = require('mongoose')
-    , User = mongoose.model('User');
+var mongoose = require('mongoose'),
+    User = mongoose.model('User');
 
 
-// CREATE
+/**
+ * Create a user
+ * @param req
+ * @param res
+ */
 exports.create = function(req, res) {
 
     console.log('CREATE user.');
-    
+
     var doc = new User(req.body);
-    
+
     doc.save(function(err) {
-    
+
         var retObj = {
             meta: {"action": "create", 'timestamp': new Date(), filename: __filename},
             doc: doc,
             err: err
         };
-        
+
         return res.send(retObj);
-        
+
     });
 
 }
 
-// RETRIEVE
-// Get all users
+/**
+ * Get all users
+ * @param req
+ * @param res
+ */
 exports.list = function(req, res) {
     var conditions, fields, options;
     
@@ -46,9 +53,14 @@ exports.list = function(req, res) {
             
             return res.send(retObj);
         })
+    ;
 }
 
-// Get 1 user
+/**
+ * Get 1 user
+ * @param req
+ * @param res
+ */
 exports.detail = function(req, res) {
     var conditions, fields, options, retDoc, i, j, groupDoc;
     
@@ -68,11 +80,16 @@ exports.detail = function(req, res) {
             };
             
             return res.send(retObj);
-        });
+        })
+    ;
 }
 
 
-// UPDATE
+/**
+ * Update a user
+ * @param req
+ * @param res
+ */
 exports.update = function(req, res) {
 
     console.log('Updating....\n', req.body);
@@ -94,7 +111,11 @@ exports.update = function(req, res) {
 }
 
 
-// DELETE
+/**
+ * Delete a user
+ * @param req
+ * @param res
+ */
 exports.delete = function(req, res) {
     var conditions, callback, retObj;
     

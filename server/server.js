@@ -9,6 +9,11 @@ var express = require('express'),
     env = process.env.NODE_ENV || 'development',
     config = require('./config/config.js')[env];
 
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+mongoose.connect(config.db);
+
 var app = express();
 
 
@@ -16,9 +21,8 @@ var app = express();
  * Configuration
  */
 app.use(express.static(path.join(__dirname, '../client')));
-app.use(bodyParser);
+app.use(bodyParser());
 app.set('port', process.env.PORT || config.port);
-
 
 /**
  * Models
@@ -44,6 +48,9 @@ route_files.forEach(function (file) {
         require(routes_path + '/' + file)(app);
     }
 });
+
+
+
 
 
 /**

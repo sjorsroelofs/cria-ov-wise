@@ -1,28 +1,26 @@
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var mongoose;
-mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
 
 var schemaName = Schema({
+    firstname: {type: String, required: true},
+    lastname: {type: String, required: true},
     username: {type: String, required: true},
-    realname: {type: String, required: true},
+    email: {type: String, required: true},
     password: {type: String, required: true},
+    phone: {type: String},
     registrationDate: {type: Date, default: Date.now}
 });
 
 
-schemaName.path('username').validate(function(val) {
-    return (val !== undefined && val !== null && val.length >= 4);
-}, 'Invalid username');
-
-schemaName.path('realname').validate(function(val) {
-    return (val !== undefined && val !== null && val.length >= 4);
-}, 'Invalid realname');
-
-
 schemaName.path('password').validate(function(val) {
     return (val !== undefined && val !== null && val.length >= 6);
-}, 'Invalid password');
+}, 'Password must be longer than 5 characters');
+
+//schemaName.path('email').validate(function (email) {
+//    var emailRegex = '/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/';
+//    return emailRegex.test(email.text);
+//}, 'Email must be valid.');
 
 
 var modelName = "User";

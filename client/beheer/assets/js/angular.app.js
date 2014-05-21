@@ -10,7 +10,7 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/home.html',
             controller: 'mainController'
         })
-        
+
         // Test
         .when('/test', {
             templateUrl: 'pages/test.html',
@@ -24,7 +24,7 @@ mentorApp.config(function($routeProvider) {
         })
         .when('/users/create', {
             templateUrl: 'pages/users/create.html',
-            controller: 'userController'
+            controller: 'userCreateController'
         })
         .when('/users/:_id', {
             templateUrl: 'pages/users/detail.html',
@@ -54,14 +54,10 @@ mentorApp.controller('userController', function($scope, $http, $routeParams, use
     $scope.save = function () {
         if ($scope.users.doc && $scope.users.doc._id !== undefined) {
             console.log('Entering update');
-            usersService.users.update({_id: $scope.users.doc._id}, $scope.users, function (res) {
-                if (res.err === null) { $scope.save.updateStatus = true; } else { $scope.save.updateStatus = false; }
-            });
+            usersService.users.update({_id: $scope.users.doc._id}, $scope.users, function (res) {});
         } else {
             console.log('Entering save');
-            usersService.users.save({}, $scope.users.doc, function (res) {
-                if (res.err === null) { $scope.save.saveStatus = true; } else { $scope.save.saveStatus = false; }
-            });
+            usersService.users.save({}, $scope.users.doc, function (res) {});
         }
     }
 
@@ -70,4 +66,20 @@ mentorApp.controller('userController', function($scope, $http, $routeParams, use
         $location.path('/users');
     }
     
+});
+
+mentorApp.controller('userCreateController', function($scope, $http, $routeParams, usersService) {
+
+    // CREATE user
+    $scope.save = function () {
+        console.log('Entering save from userCreateController');
+        usersService.users.save({}, $scope.users.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/users/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
 });
