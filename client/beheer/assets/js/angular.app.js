@@ -68,7 +68,7 @@ mentorApp.controller('userController', function($scope, $http, $routeParams, use
     
 });
 
-mentorApp.controller('userCreateController', function($scope, $http, $routeParams, usersService) {
+mentorApp.controller('userCreateController', function($scope, $http, $location, $routeParams, usersService) {
 
     // CREATE user
     $scope.save = function () {

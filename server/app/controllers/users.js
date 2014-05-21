@@ -92,18 +92,19 @@ exports.detail = function(req, res) {
  */
 exports.update = function(req, res) {
 
-    console.log('Updating....\n', req.body);
+    console.log('Updating....');
     
     var conditions = req.params._id
         , update = {
+            firstname: req.body.doc.firstname || '',
+            lastname: req.body.doc.lastname || '',
             username: req.body.doc.username || '',
-            realname: req.body.doc.realname || '',
+            email: req.body.doc.username || '',
+            phone: req.body.doc.phone || '',
             password: req.body.doc.password || ''
         }
         , options = {multi: false}
-        , callback = function(err, doc) {
-            updateGroupsWithUser(err, req, res, req.body.groups, doc);
-        };
+        , callback = function(err, doc) {};
 
 
     User
