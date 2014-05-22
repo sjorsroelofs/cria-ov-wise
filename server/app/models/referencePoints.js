@@ -5,11 +5,7 @@ var referencePointSchema = new Schema({
     description: { type: String, required: true }
 })
 
-routeSchema.path('id').validate(function(val){
-    return(val.length > 4 && val !== undefined && val !== null);
-}, '');
-
-routeSchema.path('description').validate(function(val){
+referencePointSchema.path('description').validate(function(val){
     return(val.length > 200 && val !== undefined && val !== null);
 }, '');
 
