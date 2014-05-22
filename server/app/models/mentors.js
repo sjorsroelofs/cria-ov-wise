@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 
 var schemaName = Schema({
-    userId: {type: Number, required: true}
+    userId: {type: Schema.Types.ObjectId, required: true}
 });
 
 
