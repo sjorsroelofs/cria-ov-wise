@@ -1,0 +1,38 @@
+<h1>Nieuwe reiziger toevoegen</h1>
+
+<br/>
+<a class="btn btn-primary btn-sm" href="/beheer/#/travelers">Terug naar overzicht</a>
+<br/><br/>
+
+<form name="travelerForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>User ID:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.userId"></td>
+                </tr>
+                <tr>
+                    <td>Gebruikers punten:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.userPoints"></td>
+                </tr>
+                <tr>
+                    <td>Laatst bekende GPS locatie:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.lastGpsLocation"></td>
+                </tr>
+                <tr>
+                    <td>Facebook OAuth token:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.facebookOauthToken"></td>
+                </tr>
+                <tr>
+                    <td>Twitter OAuth Token:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.twitterOauthToken"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="save()" data-ng-disable="travelerForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>

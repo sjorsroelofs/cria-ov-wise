@@ -3,7 +3,6 @@ var Schema = mongoose.Schema;
 
 
 var schemaName = Schema({
-    // @TODO: Below needs to be an array with user id's
     userId: {type: Number, required: true}
 });
 

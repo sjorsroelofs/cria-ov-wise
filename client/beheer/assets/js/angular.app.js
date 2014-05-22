@@ -44,6 +44,20 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/mentors/detail.html',
             controller: 'mentorController'
         })
+
+        // Travelers
+        .when('/travelers', {
+            templateUrl: 'pages/travelers/list.html',
+            controller: 'travelerController'
+        })
+        .when('/travelers/create', {
+            templateUrl: 'pages/travelers/create.html',
+            controller: 'travelerCreateController'
+        })
+        .when('/travelers/:_id', {
+            templateUrl: 'pages/travelers/detail.html',
+            controller: 'travelerController'
+        })
         
     ;
     
@@ -96,7 +110,7 @@ mentorApp.controller('userCreateController', function($scope, $http, $location, 
 mentorApp.controller('mentorController', function($scope, $http, $location, $routeParams, mentorsService) {
 
     // GET all mentors
-    $scope.mentors= mentorsService.mentors.get({_id: $routeParams._id}, function () {
+    $scope.mentors = mentorsService.mentors.get({_id: $routeParams._id}, function () {
         console.log('$scope.mentors', $scope.mentors);
     });
 
@@ -121,6 +135,42 @@ mentorApp.controller('mentorCreateController', function($scope, $http, $location
         mentorsService.mentors.save({}, $scope.mentors.doc, function (res) {
             if (res.err === null) {
                 $location.path('/mentors/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
+});
+
+mentorApp.controller('travelerController', function($scope, $http, $location, $routeParams, travelersService) {
+
+    // GET all travelers
+    $scope.travelers = travelersService.travelers.get({_id: $routeParams._id}, function () {
+        console.log('$scope.travelers', $scope.travelers);
+    });
+
+    // UPDATE traveler
+    $scope.update = function () {
+        console.log('Entering update');
+        travelersService.travelers.update({_id: $scope.travelers.doc._id}, $scope.travelers, function (res) {});
+    }
+
+    $scope.delete = function () {
+        travelersService.travelers.delete({_id: $routeParams._id});
+        $location.path('/travelers');
+    }
+
+});
+
+mentorApp.controller('travelerCreateController', function($scope, $http, $location, $routeParams, travelersService) {
+
+    // CREATE traveler
+    $scope.save = function () {
+        console.log('Entering save from travelerCreateController');
+        travelersService.travelers.save({}, $scope.travelers.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/travelers/' + res.doc._id);
             } else {
                 $scope.save.createStatus = false;
             }
