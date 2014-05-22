@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var referencePointSchema = new Schema({
-    id: { type int, required: true },
     description: { type: String, required: true }
 })
 
