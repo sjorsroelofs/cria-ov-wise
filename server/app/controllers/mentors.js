@@ -1,17 +1,17 @@
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    Mentor = mongoose.model('Mentor');
 
 
 /**
- * Create a user
+ * Create a Mentor
  * @param req
  * @param res
  */
 exports.create = function(req, res) {
 
-    console.log('CREATE user.');
+    console.log('CREATE Mentor.');
 
-    var doc = new User(req.body);
+    var doc = new Mentor(req.body);
 
     doc.save(function(err) {
 
@@ -28,20 +28,20 @@ exports.create = function(req, res) {
 }
 
 /**
- * Get all users
+ * Get all Mentors
  * @param req
  * @param res
  */
 exports.list = function(req, res) {
     var conditions, fields, options;
-    
-    console.log('GET users.');
-    
+
+    console.log('GET Mentors.');
+
     conditions = {};
     fields = {};
     sort = {'registrationDate': -1};
-    
-    User
+
+    Mentor
         .find(conditions, fields, options)
         .sort(sort)
         .exec(function(err, doc) {
@@ -50,27 +50,27 @@ exports.list = function(req, res) {
                 doc: doc,
                 err: err
             };
-            
+
             return res.send(retObj);
         })
     ;
 }
 
 /**
- * Get 1 user
+ * Get 1 Mentor
  * @param req
  * @param res
  */
 exports.detail = function(req, res) {
     var conditions, fields, options, retDoc, i, j, groupDoc;
-    
-    console.log('GET user with id ' + req.params._id);
-    
+
+    console.log('GET Mentor with id ' + req.params._id);
+
     conditions = req.params._id
         , fields = {}
         , options = {'registrationDate': -1};
-    
-    User
+
+    Mentor
         .findById(conditions, fields, options)
         .exec(function(err, doc) {
             var retObj = {
@@ -78,7 +78,7 @@ exports.detail = function(req, res) {
                 doc: doc,
                 err: err
             };
-            
+
             return res.send(retObj);
         })
     ;
@@ -86,7 +86,7 @@ exports.detail = function(req, res) {
 
 
 /**
- * Update a user
+ * Update a Mentor
  * @param req
  * @param res
  */
@@ -94,56 +94,51 @@ exports.update = function(req, res) {
     var conditions, callback, retObj;
 
     console.log('Updating....');
-    
-    conditions = req.params._id,
-    update = {
-        firstname: req.body.doc.firstname || '',
-        lastname: req.body.doc.lastname || '',
-        username: req.body.doc.username || '',
-        email: req.body.doc.username || '',
-        phone: req.body.doc.phone || '',
-        password: req.body.doc.password || ''
-    },
-    options = {multi: false},
-    callback = function(err, doc) {
 
-        retObj = {
-            fields: {},
-            meta: {"action": "update", 'timestamp': new Date(), filename: __filename},
-            doc: doc[0],
-            err: err
+    conditions = req.params._id,
+        update = {
+            userId: req.body.doc.userId|| ''
+        },
+        options = {multi: false},
+        callback = function(err, doc) {
+
+            retObj = {
+                fields: {},
+                meta: {"action": "update", 'timestamp': new Date(), filename: __filename},
+                doc: doc[0],
+                err: err
+            };
+
+            return res.send(retObj);
+
         };
 
-        return res.send(retObj);
-
-    };
-
-    User.findByIdAndUpdate(conditions, update, options, callback);
+    Mentor.findByIdAndUpdate(conditions, update, options, callback);
 }
 
 
 /**
- * Delete a user
+ * Delete a Mentor
  * @param req
  * @param res
  */
 exports.delete = function(req, res) {
     var conditions, callback, retObj;
-    
-    console.log('Deleting user. ', req.params._id);
-    
+
+    console.log('Deleting Mentor. ', req.params._id);
+
     conditions = {_id: req.params._id}
         , callback = function(err, doc) {
-        
-            retObj = {
-                meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
-                doc: doc,
-                err: err
-            };
-            
-            return res.send(retObj);
-            
-        }
-        
-    User.remove(conditions, callback);
+
+        retObj = {
+            meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
+            doc: doc,
+            err: err
+        };
+
+        return res.send(retObj);
+
+    }
+
+    Mentor.remove(conditions, callback);
 }

@@ -30,6 +30,20 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/users/detail.html',
             controller: 'userController'
         })
+
+        // Mentors
+        .when('/mentors', {
+            templateUrl: 'pages/mentors/list.html',
+            controller: 'mentorController'
+        })
+        .when('/mentors/create', {
+            templateUrl: 'pages/mentors/create.html',
+            controller: 'mentorCreateController'
+        })
+        .when('/mentors/:_id', {
+            templateUrl: 'pages/mentors/detail.html',
+            controller: 'mentorController'
+        })
         
     ;
     
@@ -43,22 +57,17 @@ mentorApp.controller('testController', function($scope) {
     $scope.testMessage = 'Testjee!';
 });
 
-mentorApp.controller('userController', function($scope, $http, $routeParams, usersService) {
+mentorApp.controller('userController', function($scope, $http, $location, $routeParams, usersService) {
 
     // GET all users
     $scope.users = usersService.users.get({_id: $routeParams._id}, function () {
         console.log('$scope.users', $scope.users);
     });
 
-    // CREATE, UPDATE user
-    $scope.save = function () {
-        if ($scope.users.doc && $scope.users.doc._id !== undefined) {
-            console.log('Entering update');
-            usersService.users.update({_id: $scope.users.doc._id}, $scope.users, function (res) {});
-        } else {
-            console.log('Entering save');
-            usersService.users.save({}, $scope.users.doc, function (res) {});
-        }
+    // UPDATE user
+    $scope.update = function () {
+        console.log('Entering update');
+        usersService.users.update({_id: $scope.users.doc._id}, $scope.users, function (res) {});
     }
 
     $scope.delete = function () {
@@ -76,6 +85,42 @@ mentorApp.controller('userCreateController', function($scope, $http, $location, 
         usersService.users.save({}, $scope.users.doc, function (res) {
             if (res.err === null) {
                 $location.path('/users/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
+});
+
+mentorApp.controller('mentorController', function($scope, $http, $location, $routeParams, mentorsService) {
+
+    // GET all mentors
+    $scope.mentors= mentorsService.mentors.get({_id: $routeParams._id}, function () {
+        console.log('$scope.mentors', $scope.mentors);
+    });
+
+    // UPDATE mentor
+    $scope.update = function () {
+        console.log('Entering update');
+        mentorsService.mentors.update({_id: $scope.mentors.doc._id}, $scope.mentors, function (res) {});
+    }
+
+    $scope.delete = function () {
+        mentorsService.mentors.delete({_id: $routeParams._id});
+        $location.path('/mentors');
+    }
+
+});
+
+mentorApp.controller('mentorCreateController', function($scope, $http, $location, $routeParams, mentorsService) {
+
+    // CREATE mentor
+    $scope.save = function () {
+        console.log('Entering save from mentorCreateController');
+        mentorsService.mentors.save({}, $scope.mentors.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/mentors/' + res.doc._id);
             } else {
                 $scope.save.createStatus = false;
             }

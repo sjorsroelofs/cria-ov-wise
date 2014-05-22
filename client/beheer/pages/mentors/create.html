@@ -1,0 +1,22 @@
+<h1>Nieuwe mentor toevoegen</h1>
+
+<br/>
+<a class="btn btn-primary btn-sm" href="/beheer/#/mentors">Terug naar overzicht</a>
+<br/><br/>
+
+<form name="mentorForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>User ID:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.userId"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="save()" data-ng-disable="mentorForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>
