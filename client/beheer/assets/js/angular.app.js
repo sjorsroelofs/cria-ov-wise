@@ -71,42 +71,6 @@ mentorApp.controller('testController', function($scope) {
     $scope.testMessage = 'Testjee!';
 });
 
-//mentorApp.controller('userController', function($scope, $http, $location, $routeParams, usersService) {
-//
-//    // GET all users
-//    $scope.users = usersService.users.get({_id: $routeParams._id}, function () {
-//        console.log('$scope.users', $scope.users);
-//    });
-//
-//    // UPDATE user
-//    $scope.update = function () {
-//        console.log('Entering update');
-//        usersService.users.update({_id: $scope.users.doc._id}, $scope.users, function (res) {});
-//    }
-//
-//    $scope.delete = function () {
-//        usersService.users.delete({_id: $routeParams._id});
-//        $location.path('/users');
-//    }
-//
-//});
-//
-//mentorApp.controller('userCreateController', function($scope, $http, $location, $routeParams, usersService) {
-//
-//    // CREATE user
-//    $scope.save = function () {
-//        console.log('Entering save from userCreateController');
-//        usersService.users.save({}, $scope.users.doc, function (res) {
-//            if (res.err === null) {
-//                $location.path('/users/' + res.doc._id);
-//            } else {
-//                $scope.save.createStatus = false;
-//            }
-//        });
-//    }
-//
-//});
-
 mentorApp.controller('mentorController', function($scope, $http, $location, $routeParams, mentorsService) {
 
     // GET all mentors
