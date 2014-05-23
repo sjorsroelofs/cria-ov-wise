@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var travelerSchema = Schema({
+    _id: {type: Schema.Types.ObjectId, ref: "Traveler"}
+});
 
 var schemaName = Schema({
     firstname: {type: String, required: true},
@@ -9,7 +12,8 @@ var schemaName = Schema({
     email: {type: String, required: true},
     password: {type: String, required: true},
     phone: {type: String},
-    registrationDate: {type: Date, default: Date.now}
+    registrationDate: {type: Date, default: Date.now},
+    travelers: [travelerSchema]
 });
 
 
