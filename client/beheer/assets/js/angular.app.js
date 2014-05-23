@@ -58,6 +58,20 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/badges/detail.html',
             controller: 'badgeController'
         })
+
+        // Badge data
+        .when('/badgeData', {
+            templateUrl: 'pages/badgeData/list.html',
+            controller: 'badgeDataController'
+        })
+        .when('/badgeData/create', {
+            templateUrl: 'pages/badgeData/create.html',
+            controller: 'badgeDataCreateController'
+        })
+        .when('/badgeData/:_id', {
+            templateUrl: 'pages/badgeData/detail.html',
+            controller: 'badgeDataController'
+        })
         
     ;
     
@@ -174,6 +188,42 @@ mentorApp.controller('badgeCreateController', function($scope, $http, $location,
         badgesService.badges.save({}, $scope.badges.doc, function (res) {
             if (res.err === null) {
                 $location.path('/badges/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
+});
+
+mentorApp.controller('badgeDataController', function($scope, $http, $location, $routeParams, badgeDataService) {
+
+    // GET all badgeData
+    $scope.badgeData= badgeDataService.badgeData.get({_id: $routeParams._id}, function () {
+        console.log('$scope.badgeData', $scope.badgeData);
+    });
+
+    // UPDATE badgeData
+    $scope.update = function () {
+        console.log('Entering update');
+        badgeDataService.badgeData.update({_id: $scope.badgeData.doc._id}, $scope.badgeData, function (res) {});
+    }
+
+    $scope.delete = function () {
+        badgeDataService.badgeData.delete({_id: $routeParams._id});
+        $location.path('/badgeData');
+    }
+
+});
+
+mentorApp.controller('badgeDataCreateController', function($scope, $http, $location, $routeParams, badgeDataService) {
+
+    // CREATE badgeData
+    $scope.save = function () {
+        console.log('Entering save from badgeDataCreateController');
+        badgeDataService.badgeData.save({}, $scope.badgeData.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/badgeData/' + res.doc._id);
             } else {
                 $scope.save.createStatus = false;
             }

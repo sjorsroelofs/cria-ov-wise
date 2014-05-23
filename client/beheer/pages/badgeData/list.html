@@ -1,0 +1,8 @@
+<h1>Medaille koppelingen</h1>
+
+<a href="/beheer/#/badgeData/create" class="btn btn-sm btn-success">Nieuwe medaille koppeling toevoegen</a><br/><br/>
+<input class="form-control" ng-model="query" placeholder="Typ om te zoeken.."><br/>
+
+<ul class="list-group">
+    <a data-ng-repeat="badgeD in badgeData.doc | filter:query" class="list-group-item" href="/beheer/#/badgeData/{{badgeD._id}}">{{badgeD._id}}</a>
+</ul>
