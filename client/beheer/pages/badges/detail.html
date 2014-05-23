@@ -1,0 +1,23 @@
+<h1>Medaille detail</h1>
+<br/>
+<a class="btn btn-primary btn-sm" href="/beheer/#/badges">Terug naar overzicht</a>
+<br/><br/>
+
+<form name="badgeForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Naam:</td>
+                    <td><input type="text" data-ng-model="badges.doc.name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="delete(badges.doc._id)" class="btn btn-lg btn-danger">Verwijderen</button>
+
+    <button type="button" data-ng-click="update()" data-ng-disable="badgeForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>

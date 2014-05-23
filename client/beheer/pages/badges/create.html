@@ -1,0 +1,22 @@
+<h1>Nieuwe medaille toevoegen</h1>
+
+<br/>
+<a class="btn btn-primary btn-sm" href="/beheer/#/badges">Terug naar overzicht</a>
+<br/><br/>
+
+<form name="badgeForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Naam:</td>
+                    <td><input type="text" data-ng-model="badges.doc.name"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="save()" data-ng-disable="badgeForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>
