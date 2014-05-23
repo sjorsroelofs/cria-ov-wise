@@ -97,7 +97,12 @@ exports.update = function(req, res) {
 
     conditions = req.params._id,
         update = {
-            userId: req.body.doc.userId|| ''
+            firstname: req.body.doc.firstname || '',
+            lastname: req.body.doc.lastname || '',
+            username: req.body.doc.username || '',
+            email: req.body.doc.email || '',
+            password: req.body.doc.password || '',
+            phone: req.body.doc.phone || ''
         },
         options = {multi: false},
         callback = function(err, doc) {

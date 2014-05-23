@@ -4,5 +4,5 @@
 <input class="form-control" ng-model="query" placeholder="Typ om te zoeken.."><br/>
 
 <ul class="list-group">
-    <a data-ng-repeat="traveler in travelers.doc | filter:query" class="list-group-item" href="/beheer/#/travelers/{{traveler._id}}">{{traveler.userId}}</a>
+    <a data-ng-repeat="traveler in travelers.doc | filter:query" class="list-group-item" href="/beheer/#/travelers/{{traveler._id}}">{{traveler.firstname}} {{traveler.lastname}}</a>
 </ul>

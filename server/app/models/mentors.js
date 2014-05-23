@@ -3,7 +3,13 @@ var Schema = mongoose.Schema;
 
 
 var schemaName = Schema({
-    userId: {type: Schema.Types.ObjectId, required: true}
+    firstname: {type: String, required: true},
+    lastname: {type: String, required: true},
+    username: {type: String, required: true},
+    email: {type: String, required: true},
+    password: {type: String, required: true},
+    phone: {type: String},
+    registrationDate: {type: Date, default: Date.now}
 });
 
 
