@@ -103,10 +103,11 @@ exports.update = function(req, res) {
             email: req.body.doc.email || '',
             password: req.body.doc.password || '',
             phone: req.body.doc.phone || '',
-            userPoints: req.body.doc.userPoints|| '',
-            lastGpsLocation: req.body.doc.lastGpsLocation|| '',
-            facebookOauthToken: req.body.doc.facebookOauthToken|| '',
-            twitterOauthToken: req.body.doc.twitterOauthToken|| ''
+            userPoints: req.body.doc.userPoints || '',
+            lastGpsLocation: req.body.doc.lastGpsLocation || '',
+            facebookOauthToken: req.body.doc.facebookOauthToken || '',
+            twitterOauthToken: req.body.doc.twitterOauthToken || '',
+            badges: req.body.doc.badges || ''
         },
         options = {multi: false},
         callback = function(err, doc) {

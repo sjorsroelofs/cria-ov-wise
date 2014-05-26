@@ -150,6 +150,14 @@ mentorApp.controller('travelerController', function($scope, $http, $location, $r
         $location.path('/travelers');
     }
 
+    $scope.addBadge = function () {
+        var badgeBlueprint = {
+            badgeId: ""
+        }
+
+        $scope.travelers.doc.badges.push(badgeBlueprint);
+    }
+
 });
 
 mentorApp.controller('travelerCreateController', function($scope, $http, $location, $routeParams, travelersService) {
@@ -196,42 +204,6 @@ mentorApp.controller('badgeCreateController', function($scope, $http, $location,
         badgesService.badges.save({}, $scope.badges.doc, function (res) {
             if (res.err === null) {
                 $location.path('/badges/' + res.doc._id);
-            } else {
-                $scope.save.createStatus = false;
-            }
-        });
-    }
-
-});
-
-mentorApp.controller('badgeDataController', function($scope, $http, $location, $routeParams, badgeDataService) {
-
-    // GET all badgeData
-    $scope.badgeData= badgeDataService.badgeData.get({_id: $routeParams._id}, function () {
-        console.log('$scope.badgeData', $scope.badgeData);
-    });
-
-    // UPDATE badgeData
-    $scope.update = function () {
-        console.log('Entering update');
-        badgeDataService.badgeData.update({_id: $scope.badgeData.doc._id}, $scope.badgeData, function (res) {});
-    }
-
-    $scope.delete = function () {
-        badgeDataService.badgeData.delete({_id: $routeParams._id});
-        $location.path('/badgeData');
-    }
-
-});
-
-mentorApp.controller('badgeDataCreateController', function($scope, $http, $location, $routeParams, badgeDataService) {
-
-    // CREATE badgeData
-    $scope.save = function () {
-        console.log('Entering save from badgeDataCreateController');
-        badgeDataService.badgeData.save({}, $scope.badgeData.doc, function (res) {
-            if (res.err === null) {
-                $location.path('/badgeData/' + res.doc._id);
             } else {
                 $scope.save.createStatus = false;
             }

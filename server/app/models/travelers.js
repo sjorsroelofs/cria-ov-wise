@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var badgeSchema = Schema({
+    badgeId: {type: Schema.Types.ObjectId, ref: "Badge"},
+    achievedDate: {type: Date, required: true, default: Date.now},
+});
 
 var schemaName = Schema({
     firstname: {type: String, required: true},
@@ -13,7 +17,8 @@ var schemaName = Schema({
     lastGpsLocation: {type: String},
     facebookOauthToken: {type: String},
     twitterOauthToken: {type: String},
-    registrationDate: {type: Date, default: Date.now}
+    registrationDate: {type: Date, default: Date.now},
+    badges: [badgeSchema]
 });
 
 

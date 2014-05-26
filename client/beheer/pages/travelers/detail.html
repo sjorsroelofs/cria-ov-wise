@@ -52,6 +52,23 @@
         </table>
     </div>
 
+    <hr/>
+
+    <h4>Medailles:</h4>
+    <button class="btn btn-success btn-sm" data-ng-click="addBadge()">Medaille toevoegen</button><br/><br/>
+    <table class="table">
+        <tbody>
+        <tr data-ng-repeat="badge in travelers.doc.badges">
+            <td>MedailleID:</td>
+            <td><input type="text" data-ng-model="badge.badgeId"></td>
+            <td>Medaille behaald op:</td>
+            <td><input type="text" data-ng-model="badge.achievedDate"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
     <button type="button" data-ng-click="delete(travelers.doc._id)" class="btn btn-lg btn-danger">Verwijderen</button>
 
     <button type="button" data-ng-click="update()" data-ng-disable="travelerForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>

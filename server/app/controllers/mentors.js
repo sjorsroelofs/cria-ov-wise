@@ -1,8 +1,5 @@
 var mongoose = require('mongoose'),
-    Mentor = mongoose.model('Mentor')
-//    ,
-//    Traveler = mongoose.model('Traveler');
-;
+    Mentor = mongoose.model('Mentor');
 
 /**
  * Create a Mentor
@@ -109,7 +106,7 @@ exports.update = function(req, res) {
             email: req.body.doc.email || '',
             password: req.body.doc.password || '',
             phone: req.body.doc.phone || '',
-            travelers: req.body.doc.travelers || ''
+            travelers: req.body.doc.travelers || '',
         }
         , options = {multi: false}
         , callback = function(err, doc) {
