@@ -43,10 +43,6 @@ div#route-guide {
     padding: 20px;
 }
 
-div#route-guide div.section {
-
-}
-
 div#route-guide div.section.closed {
     border-bottom: 1px solid #fff;
 }

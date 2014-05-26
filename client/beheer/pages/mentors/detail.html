@@ -36,6 +36,21 @@
         </table>
     </div>
 
+    <hr/>
+
+    <h4>Reizigers:</h4>
+    <button class="btn btn-success btn-sm" data-ng-click="addTraveler()">Add traveler</button><br/><br/>
+    <table class="table">
+        <tbody>
+        <tr data-ng-repeat="traveler in mentors.doc.travelers">
+            <td>Traveler ID:</td>
+            <td><input type="text" data-ng-model="traveler._id"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
     <button type="button" data-ng-click="delete(mentors.doc._id)" class="btn btn-lg btn-danger">Verwijderen</button>
 
     <button type="button" data-ng-click="update()" data-ng-disable="mentorForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>

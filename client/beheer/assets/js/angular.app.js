@@ -103,6 +103,14 @@ mentorApp.controller('mentorController', function($scope, $http, $location, $rou
         $location.path('/mentors');
     }
 
+    $scope.addTraveler = function () {
+        var travelerBlueprint = {
+            _id: ""
+        }
+
+        $scope.mentors.doc.travelers.push(travelerBlueprint);
+    }
+
 });
 
 mentorApp.controller('mentorCreateController', function($scope, $http, $location, $routeParams, mentorsService) {
