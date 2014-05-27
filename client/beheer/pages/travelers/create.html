@@ -1,0 +1,58 @@
+<h1>Nieuwe reiziger toevoegen</h1>
+
+<br/>
+<a class="btn btn-primary btn-sm" href="/beheer/#/travelers">Terug naar overzicht</a>
+<br/><br/>
+
+<form name="travelerForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Voornaam:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.firstname"></td>
+                </tr>
+                <tr>
+                    <td>Achternaam:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.lastname"></td>
+                </tr>
+                <tr>
+                    <td>Gebruikersnaam:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.username"></td>
+                </tr>
+                <tr>
+                    <td>Email adres:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.email"></td>
+                </tr>
+                <tr>
+                    <td>Telefoonnummer:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.phone"></td>
+                </tr>
+                <tr>
+                    <td>Wachtwoord:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.password"></td>
+                </tr>
+                <tr>
+                    <td>Gebruikers punten:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.userPoints"></td>
+                </tr>
+                <tr>
+                    <td>Laatst bekende GPS locatie:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.lastGpsLocation"></td>
+                </tr>
+                <tr>
+                    <td>Facebook OAuth token:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.facebookOauthToken"></td>
+                </tr>
+                <tr>
+                    <td>Twitter OAuth Token:</td>
+                    <td><input type="text" data-ng-model="travelers.doc.twitterOauthToken"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="button" data-ng-click="save()" data-ng-disable="travelerForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>

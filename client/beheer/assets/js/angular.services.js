@@ -2,22 +2,60 @@
 
 angular.module('mentorApp.services', ['ngResource'])
 
-    .factory('usersService', ['$resource', '$http',
+    .factory('mentorsService', ['$resource', '$http',
 
-         function ($resource) {
-             var actions = {
-                 'get': {method: 'GET'},
-                 'save': {method: 'POST'},
-                 'update': {method: 'PUT'},
-                 'query': {method: 'GET', isArray: true},
-                 'delete': {method: 'DELETE'}
-             },
-             db = {};
+        function ($resource) {
+            var actions = {
+                    'get': {method: 'GET'},
+                    'save': {method: 'POST'},
+                    'update': {method: 'PUT'},
+                    'query': {method: 'GET', isArray: true},
+                    'delete': {method: 'DELETE'}
+                },
+                db = {};
 
-             db.users = $resource('/users/:_id', {}, actions);
+            db.mentors = $resource('/mentors/:_id', {}, actions);
 
-             return db;
-         }
+            return db;
+        }
+
+    ])
+
+    .factory('travelersService', ['$resource', '$http',
+
+        function ($resource) {
+            var actions = {
+                    'get': {method: 'GET'},
+                    'save': {method: 'POST'},
+                    'update': {method: 'PUT'},
+                    'query': {method: 'GET', isArray: true},
+                    'delete': {method: 'DELETE'}
+                },
+                db = {};
+
+            db.travelers = $resource('/travelers/:_id', {}, actions);
+
+            return db;
+        }
+
+    ])
+
+    .factory('badgesService', ['$resource', '$http',
+
+        function ($resource) {
+            var actions = {
+                    'get': {method: 'GET'},
+                    'save': {method: 'POST'},
+                    'update': {method: 'PUT'},
+                    'query': {method: 'GET', isArray: true},
+                    'delete': {method: 'DELETE'}
+                },
+                db = {};
+
+            db.badges = $resource('/badges/:_id', {}, actions);
+
+            return db;
+        }
 
     ])
 

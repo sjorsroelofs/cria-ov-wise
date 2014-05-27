@@ -1,0 +1,131 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, font, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit;}
+
+table {border-collapse: collapse; border-spacing: 0;}
+caption, th, td {text-align: left; font-weight: normal;}
+form legend {display: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: "";}
+blockquote, q {quotes: "" "";}
+ol, ul {list-style: none;}
+hr {display: none; visibility: hidden;}
+
+:focus {outline: 0;}
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+/**
+ * Container
+ */
+div#container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+/**
+ * Top bar
+ */
+div#top-bar {
+    background: #eee;
+    padding: 20px;
+    border-bottom: 1px solid #fff;
+}
+
+
+/**
+ * Route guide
+ */
+div#route-guide {
+    padding: 20px;
+}
+
+div#route-guide div.section.closed {
+    border-bottom: 1px solid #fff;
+}
+
+div#route-guide div.section div.section-title {
+    background: #28a4c9;
+    color: #fff;
+    font-size: 0.9em;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+div#route-guide div.section.current div.section-title {
+    background: deepskyblue;
+    padding: 15px;
+    font-size: 1.2em;
+}
+
+div#route-guide div.section.finished div.section-title {
+    padding: 5px 15px;
+    font-size: 0.8em;
+    background: #47a447;
+}
+
+div#route-guide div.section div.section-steps {
+    padding: 20px;
+}
+
+div#route-guide div.section.closed div.section-steps {
+    display: none;
+}
+
+div#route-guide div.section div.section-steps div.button {
+    display: none;
+    width: 50%;
+    min-width: 100px;
+    margin: 0 auto;
+    padding: 15px;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    background: #47a447;
+    cursor: pointer;
+}
+
+div#route-guide div.section.current div.section-steps div.button {
+    display: block;
+}
+
+div#route-guide div.section div.section-steps div.button.arrived {
+    margin-top: 20px;
+}
+
+
+/**
+ * Footer
+ */
+div#footer {
+    border-top: 1px solid #fff;
+}
+
+div#footer ul {
+    overflow: auto;
+}
+
+div#footer ul li {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+div#footer ul li a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px;
+}
+
+div#footer ul li a.speech {
+    background: #245269;
+}
+
+div#footer ul li a.emergency {
+    background: #d43f3a;
+}

@@ -1,0 +1,58 @@
+<h1>Mentor detail</h1>
+<br/>
+<a class="btn btn-primary btn-sm" href="/beheer/#/mentors">Terug naar overzicht</a>
+<br/><br/>
+
+<form name="mentorForm">
+
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Voornaam:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.firstname"></td>
+                </tr>
+                <tr>
+                    <td>Achternaam:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.lastname"></td>
+                </tr>
+                <tr>
+                    <td>Gebruikersnaam:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.username"></td>
+                </tr>
+                <tr>
+                    <td>Email adres:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.email"></td>
+                </tr>
+                <tr>
+                    <td>Telefoonnummer:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.phone"></td>
+                </tr>
+                <tr>
+                    <td>Wachtwoord:</td>
+                    <td><input type="text" data-ng-model="mentors.doc.password"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+    <h4>Reizigers:</h4>
+    <button class="btn btn-success btn-sm" data-ng-click="addTraveler()">Reiziger toevoegen</button><br/><br/>
+    <table class="table">
+        <tbody>
+        <tr data-ng-repeat="traveler in mentors.doc.travelers">
+            <td>Reiziger ID:</td>
+            <td><input type="text" data-ng-model="traveler._id"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <button type="button" data-ng-click="delete(mentors.doc._id)" class="btn btn-lg btn-danger">Verwijderen</button>
+
+    <button type="button" data-ng-click="update()" data-ng-disable="mentorForm.$invalid" class="btn btn-primary btn-lg">Opslaan</button>
+
+</form>

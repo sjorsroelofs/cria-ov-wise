@@ -16,19 +16,61 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/test.html',
             controller: 'testController'
         })
-        
-        // Users
-        .when('/users', {
-            templateUrl: 'pages/users/list.html',
-            controller: 'userController'
+
+        // Mentors
+        .when('/mentors', {
+            templateUrl: 'pages/mentors/list.html',
+            controller: 'mentorController'
         })
-        .when('/users/create', {
-            templateUrl: 'pages/users/create.html',
-            controller: 'userCreateController'
+        .when('/mentors/create', {
+            templateUrl: 'pages/mentors/create.html',
+            controller: 'mentorCreateController'
         })
-        .when('/users/:_id', {
-            templateUrl: 'pages/users/detail.html',
-            controller: 'userController'
+        .when('/mentors/:_id', {
+            templateUrl: 'pages/mentors/detail.html',
+            controller: 'mentorController'
+        })
+
+        // Travelers
+        .when('/travelers', {
+            templateUrl: 'pages/travelers/list.html',
+            controller: 'travelerController'
+        })
+        .when('/travelers/create', {
+            templateUrl: 'pages/travelers/create.html',
+            controller: 'travelerCreateController'
+        })
+        .when('/travelers/:_id', {
+            templateUrl: 'pages/travelers/detail.html',
+            controller: 'travelerController'
+        })
+
+        // Badges
+        .when('/badges', {
+            templateUrl: 'pages/badges/list.html',
+            controller: 'badgeController'
+        })
+        .when('/badges/create', {
+            templateUrl: 'pages/badges/create.html',
+            controller: 'badgeCreateController'
+        })
+        .when('/badges/:_id', {
+            templateUrl: 'pages/badges/detail.html',
+            controller: 'badgeController'
+        })
+
+        // Badge data
+        .when('/badgeData', {
+            templateUrl: 'pages/badgeData/list.html',
+            controller: 'badgeDataController'
+        })
+        .when('/badgeData/create', {
+            templateUrl: 'pages/badgeData/create.html',
+            controller: 'badgeDataCreateController'
+        })
+        .when('/badgeData/:_id', {
+            templateUrl: 'pages/badgeData/detail.html',
+            controller: 'badgeDataController'
         })
         
     ;
@@ -43,39 +85,125 @@ mentorApp.controller('testController', function($scope) {
     $scope.testMessage = 'Testjee!';
 });
 
-mentorApp.controller('userController', function($scope, $http, $routeParams, usersService) {
+mentorApp.controller('mentorController', function($scope, $http, $location, $routeParams, mentorsService) {
 
-    // GET all users
-    $scope.users = usersService.users.get({_id: $routeParams._id}, function () {
-        console.log('$scope.users', $scope.users);
+    // GET all mentors
+    $scope.mentors = mentorsService.mentors.get({_id: $routeParams._id}, function () {
+        console.log('$scope.mentors', $scope.mentors);
     });
 
-    // CREATE, UPDATE user
-    $scope.save = function () {
-        if ($scope.users.doc && $scope.users.doc._id !== undefined) {
-            console.log('Entering update');
-            usersService.users.update({_id: $scope.users.doc._id}, $scope.users, function (res) {});
-        } else {
-            console.log('Entering save');
-            usersService.users.save({}, $scope.users.doc, function (res) {});
-        }
+    // UPDATE mentor
+    $scope.update = function () {
+        console.log('Entering update');
+        mentorsService.mentors.update({_id: $scope.mentors.doc._id}, $scope.mentors, function (res) {});
     }
 
     $scope.delete = function () {
-        usersService.users.delete({_id: $routeParams._id});
-        $location.path('/users');
+        mentorsService.mentors.delete({_id: $routeParams._id});
+        $location.path('/mentors');
     }
-    
+
+    $scope.addTraveler = function () {
+        var travelerBlueprint = {
+            _id: ""
+        }
+
+        $scope.mentors.doc.travelers.push(travelerBlueprint);
+    }
+
 });
 
-mentorApp.controller('userCreateController', function($scope, $http, $location, $routeParams, usersService) {
+mentorApp.controller('mentorCreateController', function($scope, $http, $location, $routeParams, mentorsService) {
 
-    // CREATE user
+    // CREATE mentor
     $scope.save = function () {
-        console.log('Entering save from userCreateController');
-        usersService.users.save({}, $scope.users.doc, function (res) {
+        console.log('Entering save from mentorCreateController');
+
+        console.log($scope.mentors);
+
+        mentorsService.mentors.save({}, $scope.mentors.doc, function (res) {
             if (res.err === null) {
-                $location.path('/users/' + res.doc._id);
+                $location.path('/mentors/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
+});
+
+mentorApp.controller('travelerController', function($scope, $http, $location, $routeParams, travelersService) {
+
+    // GET all travelers
+    $scope.travelers = travelersService.travelers.get({_id: $routeParams._id}, function () {
+        console.log('$scope.travelers', $scope.travelers);
+    });
+
+    // UPDATE traveler
+    $scope.update = function () {
+        console.log('Entering update');
+        travelersService.travelers.update({_id: $scope.travelers.doc._id}, $scope.travelers, function (res) {});
+    }
+
+    $scope.delete = function () {
+        travelersService.travelers.delete({_id: $routeParams._id});
+        $location.path('/travelers');
+    }
+
+    $scope.addBadge = function () {
+        var badgeBlueprint = {
+            badgeId: ""
+        }
+
+        $scope.travelers.doc.badges.push(badgeBlueprint);
+    }
+
+});
+
+mentorApp.controller('travelerCreateController', function($scope, $http, $location, $routeParams, travelersService) {
+
+    // CREATE traveler
+    $scope.save = function () {
+        console.log('Entering save from travelerCreateController');
+        travelersService.travelers.save({}, $scope.travelers.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/travelers/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
+});
+
+mentorApp.controller('badgeController', function($scope, $http, $location, $routeParams, badgesService) {
+
+    // GET all badges
+    $scope.badges= badgesService.badges.get({_id: $routeParams._id}, function () {
+        console.log('$scope.badges', $scope.badges);
+    });
+
+    // UPDATE badge
+    $scope.update = function () {
+        console.log('Entering update');
+        badgesService.badges.update({_id: $scope.badges.doc._id}, $scope.badges, function (res) {});
+    }
+
+    $scope.delete = function () {
+        badgesService.badges.delete({_id: $routeParams._id});
+        $location.path('/badges');
+    }
+
+});
+
+mentorApp.controller('badgeCreateController', function($scope, $http, $location, $routeParams, badgesService) {
+
+    // CREATE badge
+    $scope.save = function () {
+        console.log('Entering save from badgeCreateController');
+        badgesService.badges.save({}, $scope.badges.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/badges/' + res.doc._id);
             } else {
                 $scope.save.createStatus = false;
             }
