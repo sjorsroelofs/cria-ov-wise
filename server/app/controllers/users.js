@@ -34,9 +34,9 @@ exports.create = function(req, res) {
  */
 exports.list = function(req, res) {
     var conditions, fields, options;
-    
+
     console.log('GET users.');
-    
+
     conditions = {};
     fields = {};
     sort = {'registrationDate': -1};
