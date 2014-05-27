@@ -8,6 +8,9 @@ module.exports = function(app) {
     // Get all travelers
     app.route('/travelers').get(controller.list);
 
+    // Verify if a user is valid
+    app.route('/travelers/verifylogin/:_id').get(controller.verify);
+
     // Get one mentor
     app.route('/travelers/:_id').get(controller.detail);
 

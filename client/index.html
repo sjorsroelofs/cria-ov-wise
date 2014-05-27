@@ -1,74 +1,28 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="nl">
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="nl" ng-app="travelerApp">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-    <link rel="stylesheet" href="assets/css/style.css" />
-	<title>OV-Wise!</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>OV-Wise!</title>
+    <link href="assets/css/style.css" rel="stylesheet" />
 </head>
 <body>
 
-    <div id="container">
+<div class="container theme-showcase" role="main">
+    <div data-ng-view></div>
+</div><!-- div.container -->
 
-        <div id="top-bar">
-            Top
-        </div><!-- div#top-bar -->
+<!-- Lib -->
+<script src="./assets/js/angular.1.2.16.min.js"></script>
+<script src="./assets/js/angular-route.1.2.16.min.js"></script>
+<script src="./assets/js/angular-resource.1.0.8.min.js"></script>
+<script src="./assets/js/angular.services.js"></script>
 
-        <div id="route-guide">
+<!-- App -->
+<script src="./assets/js/angular.app.js"></script>
 
-            <div id="step1" class="section walking open current">
-                <div class="section-title">Loop naar de bus</div>
-                <div class="section-steps">
-                    Ice cream jelly beans sweet roll gummies sesame snaps pudding. Candy canes jujubes jujubes icing marzipan donut candy canes lollipop marshmallow.
-                    <div class="button arrived">Ik ben er!</div>
-                </div>
-            </div>
+<!-- jQuery -->
+<script src="./assets/js/jquery.1.11.min.js"></script>
 
-            <div id="step2" class="section bus closed">
-                <div class="section-title">Neem bus 331</div>
-                <div class="section-steps">
-                    Tootsie roll candy canes carrot cake wafer halvah gummi bears jelly-o. Cotton candy cotton candy applicake pudding muffin.
-                    <div class="button arrived">Ik ben er!</div>
-                </div>
-            </div>
-
-            <div id="step3" class="section walking closed">
-                <div class="section-title">Loop naar spoor 3</div>
-                <div class="section-steps">
-                    Dessert danish biscuit. Danish candy unerdwear.com unerdwear.com cookie cookie sesame snaps chocolate cake pudding.
-                    <div class="button arrived">Ik ben er!</div>
-                </div>
-            </div>
-
-            <div id="step4" class="section train closed">
-                <div class="section-title">Neem de trein richting Arnhem</div>
-                <div class="section-steps">
-                    Pie cotton candy soufflé donut tiramisu lollipop chocolate bar topping. Carrot cake marshmallow gummi bears candy canes cotton candy cake powder gingerbread topping.
-                    <div class="button arrived">Ik ben er!</div>
-                </div>
-            </div>
-
-            <div id="step5" class="section walking closed">
-                <div class="section-title">Loop naar school</div>
-                <div class="section-steps">
-                    Lemon drops candy applicake dragée dessert topping. Pie jelly pie danish dessert chocolate cake. Tiramisu powder chocolate bar gummi bears lemon drops jelly chupa chups danish sesame snaps.
-                    <div class="button arrived">Ik ben er!</div>
-                </div>
-            </div>
-
-        </div><!-- div#route-guide -->
-
-        <div id="footer">
-            <ul>
-                <li><a href="#" class="speech">Spraak</a></li>
-                <li><a href="#" class="emergency">Help!</a></li>
-            </ul>
-        </div><!-- div#footer -->
-
-    </div><!-- div#container -->
-
-    <script src="./assets/js/jquery.1.11.1.js"></script>
-    <script src="./assets/js/angular.1.2.16.min.js"></script>
-    <script src="./assets/js/global.js"></script>
 </body>
 </html>

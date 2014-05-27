@@ -13,13 +13,23 @@ hr {display: none; visibility: hidden;}
 
 body {
     font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+p {
+    padding: 10px 0;
 }
 
 
 /**
  * Container
  */
-div#container {
+div.container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;

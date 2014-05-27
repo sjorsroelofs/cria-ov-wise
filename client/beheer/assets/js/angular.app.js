@@ -11,12 +11,6 @@ mentorApp.config(function($routeProvider) {
             controller: 'mainController'
         })
 
-        // Test
-        .when('/test', {
-            templateUrl: 'pages/test.html',
-            controller: 'testController'
-        })
-
         // Mentors
         .when('/mentors', {
             templateUrl: 'pages/mentors/list.html',
@@ -71,6 +65,11 @@ mentorApp.config(function($routeProvider) {
         .when('/badgeData/:_id', {
             templateUrl: 'pages/badgeData/detail.html',
             controller: 'badgeDataController'
+        })
+
+        // Redirect to home
+        .otherwise({
+            redirectTo: '/'
         })
         
     ;

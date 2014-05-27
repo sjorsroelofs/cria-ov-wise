@@ -140,15 +140,37 @@ exports.delete = function(req, res) {
     conditions = {_id: req.params._id}
         , callback = function(err, doc) {
 
-        retObj = {
-            meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
-            doc: doc,
-            err: err
-        };
+            retObj = {
+                meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
+                doc: doc,
+                err: err
+            };
 
-        return res.send(retObj);
+            return res.send(retObj);
 
-    }
+        }
 
     Traveler.remove(conditions, callback);
+}
+
+
+/**
+ * Verify if a traveler is valid
+ * @param req
+ * @param res
+ */
+exports.verify = function(req, res) {
+    var conditions, callback, retObj;
+
+    console.log('Verifying traveler with id ' + req.params._id);
+
+    // Get the user
+    Traveler.findOne({_id: req.params._id}, function(err, doc) {
+        if(!err && doc) {
+            return res.send({ 'verified': true });
+        } else {
+            return res.send({ 'verified': false });
+        }
+    });
+
 }
