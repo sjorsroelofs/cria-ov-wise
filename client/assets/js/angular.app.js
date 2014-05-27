@@ -16,6 +16,12 @@ travelerApp.config(function($routeProvider) {
             controller: 'loginController'
         })
 
+        // Logout
+        .when('/logout', {
+            template: "",
+            controller: 'logoutController'
+        })
+
         // Travel
         .when('/travel', {
             templateUrl: 'pages/travel/travel.html',
@@ -56,7 +62,17 @@ travelerApp.controller('loginController', function($scope, $location, travelersV
 
 });
 
-travelerApp.controller('travelController', function($scope) {
+
+travelerApp.controller('logoutController', function($scope, $location) {
+
+    localStorage['userVerified'] = false;
+    $location.path("/");
+
+});
+
+travelerApp.controller('travelController', function($scope, $location) {
+
+    checkIfUserIsVerified($location);
 
 });
 
