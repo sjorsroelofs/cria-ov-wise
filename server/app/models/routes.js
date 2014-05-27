@@ -8,7 +8,7 @@ var routeSchema = Schema({
     transportType: { type: String , required: true },
     startpoint: { type: String, required: true},
     endpoint: { type: String, required: true},
-    travelStop: [travelStopSchema]
+//    travelStop: [travelStopSchema]
     //travelTime: {type: Number, required: true }
 
 });

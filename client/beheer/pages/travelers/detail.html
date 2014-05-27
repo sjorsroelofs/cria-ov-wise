@@ -54,6 +54,23 @@
 
     <hr/>
 
+    <h4>Noodnummers:</h4>
+    <button class="btn btn-success btn-sm" data-ng-click="addEmergencyNumber()">Noodnummer toevoegen</button><br/><br/>
+    <table class="table">
+        <tbody>
+        <tr data-ng-repeat="number in travelers.doc.emergencyNumbers">
+            <td>Naam:</td>
+            <td><input type="text" data-ng-model="number.name"></td>
+            <td>Nummer:</td>
+            <td><input type="text" data-ng-model="number.number"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <hr/>
+
     <h4>Medailles:</h4>
     <button class="btn btn-success btn-sm" data-ng-click="addBadge()">Medaille toevoegen</button><br/><br/>
     <table class="table">

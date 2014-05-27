@@ -107,7 +107,8 @@ exports.update = function(req, res) {
             lastGpsLocation: req.body.doc.lastGpsLocation || '',
             facebookOauthToken: req.body.doc.facebookOauthToken || '',
             twitterOauthToken: req.body.doc.twitterOauthToken || '',
-            badges: req.body.doc.badges || ''
+            badges: req.body.doc.badges || '',
+            emergencyNumbers: req.body.doc.emergencyNumbers || ''
         },
         options = {multi: false},
         callback = function(err, doc) {

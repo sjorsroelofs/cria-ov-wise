@@ -18,7 +18,11 @@ var schemaName = Schema({
     facebookOauthToken: {type: String},
     twitterOauthToken: {type: String},
     registrationDate: {type: Date, default: Date.now},
-    badges: [badgeSchema]
+    badges: [badgeSchema],
+    emergencyNumbers: [{
+        name: {type: String, required: true},
+        number: {type: String, required: true}
+    }]
 });
 
 

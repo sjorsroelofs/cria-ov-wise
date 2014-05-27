@@ -1,0 +1,8 @@
+<h1>Home!</h1>
+<a href="/#/logout">Uitloggen</a><br/>
+<a href="/#/travel">Reis maken</a><br/>
+<br/>
+<h2>Selecteer een reis:</h2>
+<ul>
+    <li data-ng-repeat="route in routes" ><a href="/#/travel/{{ route._id }}">{{ route.name }}</a></li>
+</ul>

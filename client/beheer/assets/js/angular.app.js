@@ -157,6 +157,15 @@ mentorApp.controller('travelerController', function($scope, $http, $location, $r
         $scope.travelers.doc.badges.push(badgeBlueprint);
     }
 
+    $scope.addEmergencyNumber = function() {
+        var numberBlueprint = {
+            name: "",
+            number: ""
+        }
+
+        $scope.travelers.doc.emergencyNumbers.push(numberBlueprint);
+    }
+
 });
 
 mentorApp.controller('travelerCreateController', function($scope, $http, $location, $routeParams, travelersService) {

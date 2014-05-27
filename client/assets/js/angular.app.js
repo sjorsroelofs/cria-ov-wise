@@ -6,8 +6,8 @@ travelerApp.config(function($routeProvider) {
 
         // Home
         .when('/', {
-            templateUrl: 'pages/home.html',
-            controller: 'mainController'
+            templateUrl: 'pages/routes.html',
+            controller: 'routesController'
         })
 
         // Login
@@ -23,7 +23,7 @@ travelerApp.config(function($routeProvider) {
         })
 
         // Travel
-        .when('/travel', {
+        .when('/travel/:_id', {
             templateUrl: 'pages/travel/travel.html',
             controller: 'travelController'
         })
@@ -37,11 +37,15 @@ travelerApp.config(function($routeProvider) {
 
 });
 
-travelerApp.controller('mainController', function($scope, $location) {
+travelerApp.controller('routesController', function($scope, $location) {
 
     checkIfUserIsVerified($location);
 
-    $scope.helloMessage = 'Hello world!';
+    $scope.routes = [
+        { _id: 'asdasd', name: 'Route 1' },
+        { _id: 'asdase', name: 'Route 2' },
+        { _id: 'asdasdase', name: 'Route 3' }
+    ];
 
 });
 
@@ -70,16 +74,24 @@ travelerApp.controller('logoutController', function($scope, $location) {
 
 });
 
-travelerApp.controller('travelController', function($scope, $location) {
+travelerApp.controller('travelController', function($scope, $routeParams, $location) {
 
     checkIfUserIsVerified($location);
 
+    console.log('Getting route with ID ' + $routeParams._id);
+
 });
 
+/**
+ * Check if the user is verified. If not, redirect to the login page
+ * @param locationObject
+ */
 function checkIfUserIsVerified(locationObject) {
+
     if(localStorage['userVerified'] !== 'true') {
         locationObject.path("/login");
     }
 
     return;
+
 }
