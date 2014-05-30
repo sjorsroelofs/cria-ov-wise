@@ -22,6 +22,10 @@ var schemaName = Schema({
     emergencyNumbers: [{
         name: {type: String, required: true},
         number: {type: String, required: true}
+    }],
+    routes: [{
+        name: {type: String, required: true },
+        destination: { type: String, required: true}
     }]
 });
 

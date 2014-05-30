@@ -156,26 +156,35 @@ mentorApp.controller('travelerController', function($scope, $http, $location, $r
     $scope.update = function () {
         console.log('Entering update');
         travelersService.travelers.update({_id: $scope.travelers.doc._id}, $scope.travelers, function (res) {});
-    }
+    };
 
     $scope.delete = function () {
         travelersService.travelers.delete({_id: $routeParams._id});
         $location.path('/travelers');
-    }
+    };
 
     $scope.addBadge = function () {
         var badgeBlueprint = {
             badgeId: ""
-        }
+        };
 
         $scope.travelers.doc.badges.push(badgeBlueprint);
-    }
+    };
+
+    $scope.addRoute = function () {
+        var routeBlueprint = {
+            name: "",
+            destination: ""
+        };
+
+        $scope.travelers.doc.routes.push(routeBlueprint);
+    };
 
     $scope.addEmergencyNumber = function() {
         var numberBlueprint = {
             name: "",
             number: ""
-        }
+        };
 
         $scope.travelers.doc.emergencyNumbers.push(numberBlueprint);
     }

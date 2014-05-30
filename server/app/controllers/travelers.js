@@ -108,7 +108,8 @@ exports.update = function(req, res) {
             facebookOauthToken: req.body.doc.facebookOauthToken || '',
             twitterOauthToken: req.body.doc.twitterOauthToken || '',
             badges: req.body.doc.badges || '',
-            emergencyNumbers: req.body.doc.emergencyNumbers || ''
+            emergencyNumbers: req.body.doc.emergencyNumbers || '',
+            routes: req.body.doc.routes || ''
         },
         options = {multi: false},
         callback = function(err, doc) {

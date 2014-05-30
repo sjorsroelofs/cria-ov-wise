@@ -69,6 +69,21 @@
 
     <hr/>
 
+    <h4>Routes:</h4>
+    <button class="btn btn-success btn-sm" data-ng-click="addRoute()">Route toevoegen</button><br/><br/>
+    <table class="table">
+        <tbody>
+        <tr data-ng-repeat="route in travelers.doc.routes">
+            <td>Naam:</td>
+            <td><input type="text" data-ng-model="route.name"></td>
+            <td>Bestemming:</td>
+            <td><input type="text" data-ng-model="route.destination"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
     <h4>Medailles:</h4>
     <button class="btn btn-success btn-sm" data-ng-click="addBadge()">Medaille toevoegen</button><br/><br/>
     <table class="table">
