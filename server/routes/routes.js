@@ -11,6 +11,9 @@ module.exports = function(app) {
     // Get one route
     app.route('/routes/:_id').get(controller.detail);
 
+    // Update a badge
+    app.route('/routes/:_id').put(controller.update);
+
     // Delete a single route
     app.route('/routes/:_id').delete(controller.delete);
 

@@ -67,6 +67,20 @@ mentorApp.config(function($routeProvider) {
             controller: 'badgeDataController'
         })
 
+        // Routes
+        .when('/routes', {
+            templateUrl: 'pages/routes/list.html',
+            controller: 'routeController'
+        })
+        .when('/routes/create', {
+            templateUrl: 'pages/routes/create.html',
+            controller: 'routeCreateController'
+        })
+        .when('/routes/:_id', {
+            templateUrl: 'pages/routes/detail.html',
+            controller: 'routeController'
+        })
+
         // Redirect to home
         .otherwise({
             redirectTo: '/'
@@ -187,7 +201,7 @@ mentorApp.controller('travelerCreateController', function($scope, $http, $locati
 mentorApp.controller('badgeController', function($scope, $http, $location, $routeParams, badgesService) {
 
     // GET all badges
-    $scope.badges= badgesService.badges.get({_id: $routeParams._id}, function () {
+    $scope.badges = badgesService.badges.get({_id: $routeParams._id}, function () {
         console.log('$scope.badges', $scope.badges);
     });
 
@@ -212,6 +226,42 @@ mentorApp.controller('badgeCreateController', function($scope, $http, $location,
         badgesService.badges.save({}, $scope.badges.doc, function (res) {
             if (res.err === null) {
                 $location.path('/badges/' + res.doc._id);
+            } else {
+                $scope.save.createStatus = false;
+            }
+        });
+    }
+
+});
+
+mentorApp.controller('routeController', function($scope, $http, $location, $routeParams, routesService) {
+
+    // GET all routes
+    $scope.routes = routesService.routes.get({_id: $routeParams._id}, function () {
+        console.log('$scope.routes', $scope.routes);
+    });
+
+    // UPDATE route
+    $scope.update = function () {
+        console.log('Entering update');
+        routesService.routes.update({_id: $scope.routes.doc._id}, $scope.routes, function (res) {});
+    }
+
+    $scope.delete = function () {
+        routesService.routes.delete({_id: $routeParams._id});
+        $location.path('/routes');
+    }
+
+});
+
+mentorApp.controller('routeCreateController', function($scope, $http, $location, $routeParams, routesService) {
+
+    // CREATE route
+    $scope.save = function () {
+        console.log('Entering save from routeCreateController');
+        routesService.routes.save({}, $scope.routes.doc, function (res) {
+            if (res.err === null) {
+                $location.path('/routes/' + res.doc._id);
             } else {
                 $scope.save.createStatus = false;
             }

@@ -1,0 +1,8 @@
+<h1>Routes</h1>
+
+<a href="/beheer/#/routes/create" class="btn btn-sm btn-success">Nieuwe route toevoegen</a><br/><br/>
+<input class="form-control" ng-model="query" placeholder="Typ om te zoeken.."><br/>
+
+<ul class="list-group">
+    <a data-ng-repeat="route in routes.doc | filter:query" class="list-group-item" href="/beheer/#/routes/{{route._id}}">{{route.name}}</a>
+</ul>
