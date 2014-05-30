@@ -4,5 +4,5 @@
 <br/>
 <h2>Selecteer een reis:</h2>
 <ul>
-    <li data-ng-repeat="route in routes" ><a href="/#/travel/{{ route._id }}">{{ route.name }}</a></li>
+    <li data-ng-repeat="route in traveler.doc.routes" ><a href="/#/travel/{{ route._id }}">{{ route.name }}</a></li>
 </ul>

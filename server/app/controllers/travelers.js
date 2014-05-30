@@ -25,7 +25,7 @@ exports.create = function(req, res) {
 
     });
 
-}
+};
 
 /**
  * Get all Travelers
@@ -54,7 +54,7 @@ exports.list = function(req, res) {
             return res.send(retObj);
         })
     ;
-}
+};
 
 /**
  * Get 1 Traveler
@@ -82,7 +82,40 @@ exports.detail = function(req, res) {
             return res.send(retObj);
         })
     ;
-}
+};
+
+/**
+ * Get 1 Route from Traveler
+ * @param req
+ * @param res
+ */
+exports.routeDetail = function(req, res) {
+    var conditions, fields, options, retDoc, i, j, groupDoc;
+
+    console.log('GET Route with id ' + req.params.routeId + ' from Traveler with id ' + req.params.userId);
+
+    conditions = req.params.userId,
+        fields = {},
+        options = {};
+
+    Traveler
+        .findOne({ 'routes._id' : req.params.routeId }, function(err, traveler) {
+
+            traveler.routes.forEach(function(route) {
+                if(route._id == req.params.routeId) {
+                    var retObj = {
+                        meta: {"action": "detail", 'timestamp': new Date(), filename: __filename},
+                        doc: route,
+                        err: err
+                    };
+
+                    return res.send(retObj);
+                }
+            });
+
+        })
+    ;
+};
 
 
 /**
@@ -126,7 +159,7 @@ exports.update = function(req, res) {
         };
 
     Traveler.findByIdAndUpdate(conditions, update, options, callback);
-}
+};
 
 
 /**
@@ -153,7 +186,7 @@ exports.delete = function(req, res) {
         }
 
     Traveler.remove(conditions, callback);
-}
+};
 
 
 /**
@@ -175,4 +208,4 @@ exports.verify = function(req, res) {
         }
     });
 
-}
+};

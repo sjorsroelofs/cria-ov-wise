@@ -23,7 +23,7 @@ travelerApp.config(function($routeProvider) {
         })
 
         // Travel
-        .when('/travel/:_id', {
+        .when('/travel/:routeId', {
             templateUrl: 'pages/travel/travel.html',
             controller: 'travelController'
         })
@@ -43,15 +43,13 @@ travelerApp.config(function($routeProvider) {
 
 });
 
-travelerApp.controller('routesController', function($scope, $location) {
+travelerApp.controller('routesController', function($scope, $location, travelersService) {
 
     checkIfUserIsVerified($location);
 
-    $scope.routes = [
-        { _id: 'asdasd', name: 'Route 1' },
-        { _id: 'asdase', name: 'Route 2' },
-        { _id: 'asdasdase', name: 'Route 3' }
-    ];
+    $scope.traveler = travelersService.traveler.get({_id: localStorage['userId']}, $scope.traveler, function (res) {
+        console.log($scope.traveler);
+    });
 
 });
 
@@ -83,10 +81,17 @@ travelerApp.controller('logoutController', function($scope, $location) {
 
 });
 
-travelerApp.controller('travelController', function($scope, $routeParams, $location) {
+travelerApp.controller('travelController', function($scope, $routeParams, $location, travelerRouteService, ovdataService) {
 
     checkIfUserIsVerified($location);
 
+    $scope.routeDetails = travelerRouteService.route.get({userId: localStorage['userId'], routeId: $routeParams.routeId}, $scope.routeDetails, function (res) {
+        console.log(res);
+
+        $scope.routeDirections = ovdataService.ovdata.get({start: 'Heijenoordseweg 5 Arnhem', destination: $scope.routeDetails.doc.destination}, $scope.routeDirections, function (res) {
+            console.log(res);
+        });
+    });
 
     initRouteGuidance();
 

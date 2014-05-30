@@ -32,4 +32,34 @@ angular.module('travelerApp.services', ['ngResource'])
 
     ])
 
+    .factory('travelerRouteService', ['$resource', '$http',
+
+        function ($resource) {
+            var actions = {
+                    'get': {method: 'GET'}
+                },
+                db = {};
+
+            db.route = $resource('/travelers/route/:userId/:routeId', {}, actions);
+
+            return db;
+        }
+
+    ])
+
+    .factory('ovdataService', ['$resource', '$http',
+
+        function ($resource) {
+            var actions = {
+                    'get': {method: 'GET'}
+                },
+                db = {};
+
+            db.ovdata = $resource('/ovdata/:start/:destination', {}, actions);
+
+            return db;
+        }
+
+    ])
+
 ;

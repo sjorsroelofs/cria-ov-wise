@@ -14,6 +14,9 @@ module.exports = function(app) {
     // Get one mentor
     app.route('/travelers/:_id').get(controller.detail);
 
+    // Get one route from a traveler
+    app.route('/travelers/route/:userId/:routeId').get(controller.routeDetail);
+
     // Update a mentor
     app.route('/travelers/:_id').put(controller.update);
 
