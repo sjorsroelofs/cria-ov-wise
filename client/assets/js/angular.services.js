@@ -17,4 +17,19 @@ angular.module('travelerApp.services', ['ngResource'])
 
     ])
 
+    .factory('travelersService', ['$resource', '$http',
+
+        function ($resource) {
+            var actions = {
+                    'get': {method: 'GET'}
+                },
+                db = {};
+
+            db.traveler = $resource('/travelers/:_id', {}, actions);
+
+            return db;
+        }
+
+    ])
+
 ;
