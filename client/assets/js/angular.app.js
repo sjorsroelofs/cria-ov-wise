@@ -93,67 +93,51 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
         });
     });
 
-    initRouteGuidance();
+    // Slide the section title
+    $scope.handleSectionTitleClick = function($event) {
+        var section = jQuery($event.target).parent();
 
-    function initRouteGuidance() {
-
-        // SlideToggle the section title
-        jQuery('div.section div.section-title').on('click', function() {
-
-            var section = jQuery(this).parent();
-
-            section.find('div.section-steps').slideToggle(200, function() {
-                if(section.hasClass('open')) section.removeClass('open').addClass('closed');
-                else  section.removeClass('closed').addClass('open');
-            });
-
+        section.find('div.section-steps').slideToggle(200, function() {
+            if(section.hasClass('open')) section.removeClass('open').addClass('closed');
+            else section.removeClass('closed').addClass('open');
         });
+    };
 
-        // Go to the next section
-        jQuery('div.section div.button.arrived').on('click', function() {
+    // Go to the next section
+    $scope.goToNextSection = function($event) {
+        var section = jQuery($event.target).parent().parent();
+        var nextSection = section.next('div.section');
 
-            var section = jQuery(this).parent().parent();
-            var nextSection = section.next('div.section');
+        finishSection(section);
 
-            finishSection(section);
+        if(nextSection.hasClass('section')) activateSection(nextSection);
+        else finish();
+    };
 
-            if(nextSection.hasClass('section')) activateSection(nextSection);
-            else finish();
+    // Activate a section
+    var activateSection = function(section) {
+        if(section.hasClass('closed')) {
+            section.find('div.section-steps').slideToggle(200, callback);
+        } else {
+            callback();
+        }
 
+        function callback() {
+            section.removeClass('closed').addClass('open current');
+        }
+    };
+
+    // Finish a section
+    var finishSection = function(section) {
+        section.find('div.section-steps').slideToggle(200, function() {
+            section.removeClass('open current').addClass('closed finished');
         });
+    };
 
-        // Finish a section
-        function finishSection(section) {
-
-            section.find('div.section-steps').slideToggle(200, function() {
-                section.removeClass('open current').addClass('closed finished');
-            });
-
-        }
-
-        // Activate a section
-        function activateSection(section) {
-
-            if(section.hasClass('closed')) {
-                section.find('div.section-steps').slideToggle(200, function() {
-                    callback();
-                });
-            } else {
-                callback();
-            }
-
-            function callback() {
-                section.removeClass('closed').addClass('open current');
-            }
-
-        }
-
-        // Finish the route
-        function finish() {
-            alert('Finished!');
-        }
-
-    }
+    // Finish the route
+    var finish = function() {
+        alert('Finished!');
+    };
 
 });
 
