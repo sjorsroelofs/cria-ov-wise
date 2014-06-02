@@ -5,22 +5,11 @@
 <div id="route-guide">
 
     <div data-ng-repeat="step in routeDirections.steps"
-         id="step1"
          class="section {{ step.type }}"
          ng-class="{current : $first, open: $first, closed: !$first}"
          ng-include
          src="'pages/travel/steps/step-' + step.type + '.html'">
     </div>
-
-
-
-    <!--<div id="step5" class="section walking closed">-->
-        <!--<div class="section-title">Loop naar school</div>-->
-            <!--<div class="section-steps">-->
-                <!--Lemon drops candy applicake dragée dessert topping. Pie jelly pie danish dessert chocolate cake. Tiramisu powder chocolate bar gummi bears lemon drops jelly chupa chups danish sesame snaps.-->
-            <!--<div class="button arrived">Ik ben er!</div>-->
-        <!--</div>-->
-    <!--</div>-->
 
 </div><!-- div#route-guide -->
 

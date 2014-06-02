@@ -129,34 +129,34 @@ exports.update = function(req, res) {
     console.log('Updating....');
 
     conditions = req.params._id,
-        update = {
-            firstname: req.body.doc.firstname || '',
-            lastname: req.body.doc.lastname || '',
-            username: req.body.doc.username || '',
-            email: req.body.doc.email || '',
-            password: req.body.doc.password || '',
-            phone: req.body.doc.phone || '',
-            userPoints: req.body.doc.userPoints || '',
-            lastGpsLocation: req.body.doc.lastGpsLocation || '',
-            facebookOauthToken: req.body.doc.facebookOauthToken || '',
-            twitterOauthToken: req.body.doc.twitterOauthToken || '',
-            badges: req.body.doc.badges || '',
-            emergencyNumbers: req.body.doc.emergencyNumbers || '',
-            routes: req.body.doc.routes || ''
-        },
-        options = {multi: false},
-        callback = function(err, doc) {
+    update = {},
+    options = {multi: false},
+    callback = function(err, doc) {
 
-            retObj = {
-                fields: {},
-                meta: {"action": "update", 'timestamp': new Date(), filename: __filename},
-                doc: doc[0],
-                err: err
-            };
-
-            return res.send(retObj);
-
+        retObj = {
+            fields: {},
+            meta: {"action": "update", 'timestamp': new Date(), filename: __filename},
+            doc: doc[0],
+            err: err
         };
+
+        return res.send(retObj);
+
+    };
+
+    if(req.body.doc.firstname) update.firstname = req.body.doc.firstname;
+    if(req.body.doc.lastname) update.lastname = req.body.doc.lastname;
+    if(req.body.doc.username) update.username = req.body.doc.username;
+    if(req.body.doc.email) update.email = req.body.doc.email;
+    if(req.body.doc.password) update.password = req.body.doc.password;
+    if(req.body.doc.phone) update.phone = req.body.doc.phone;
+    if(req.body.doc.userPoints) update.userPoints = req.body.doc.userPoints;
+    if(req.body.doc.lastGpsLocation) update.lastGpsLocation = req.body.doc.lastGpsLocation;
+    if(req.body.doc.facebookOauthToken) update.facebookOauthToken = req.body.doc.facebookOauthToken;
+    if(req.body.doc.twitterOauthToken) update.twitterOauthToken = req.body.doc.twitterOauthToken;
+    if(req.body.doc.badges) update.badges = req.body.doc.badges;
+    if(req.body.doc.emergencyNumbers) update.emergencyNumbers = req.body.doc.emergencyNumbers;
+    if(req.body.doc.routes) update.routes = req.body.doc.routes;
 
     Traveler.findByIdAndUpdate(conditions, update, options, callback);
 };

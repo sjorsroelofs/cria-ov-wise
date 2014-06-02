@@ -1,4 +1,3 @@
-
 var travelerApp = angular.module('travelerApp', ['ngRoute', 'travelerApp.services']);
 
 travelerApp.config(function($routeProvider) {
@@ -56,6 +55,7 @@ travelerApp.controller('routesController', function($scope, $location, travelers
 travelerApp.controller('loginController', function($scope, $location, travelersVerifyService) {
 
     $scope.verifyUser = function() {
+
         travelersVerifyService.traveler.get({_id: $scope.insert_userId}, $scope.traveler, function (res) {
             if(res.verified) {
                 localStorage['userVerified'] = true;
@@ -81,30 +81,41 @@ travelerApp.controller('logoutController', function($scope, $location) {
 
 });
 
-travelerApp.controller('travelController', function($scope, $routeParams, $location, travelerRouteService, ovdataService) {
+travelerApp.controller('travelController', function($scope, $routeParams, $location, travelersService, travelerRouteService, ovdataService) {
+
+    var activateSection, finishSection, finish, saveGps;
 
     checkIfUserIsVerified($location);
 
+    setInterval(function() {
+        saveGps();
+    }, 5000);
+
     $scope.routeDetails = travelerRouteService.route.get({userId: localStorage['userId'], routeId: $routeParams.routeId}, $scope.routeDetails, function (res) {
+
         console.log(res);
 
         $scope.routeDirections = ovdataService.ovdata.get({start: 'Heijenoordseweg 5 Arnhem', destination: $scope.routeDetails.doc.destination}, $scope.routeDirections, function (res) {
             console.log(res);
         });
+
     });
 
     // Slide the section title
     $scope.handleSectionTitleClick = function($event) {
+
         var section = jQuery($event.target).parent();
 
         section.find('div.section-steps').slideToggle(200, function() {
             if(section.hasClass('open')) section.removeClass('open').addClass('closed');
             else section.removeClass('closed').addClass('open');
         });
+
     };
 
     // Go to the next section
     $scope.goToNextSection = function($event) {
+
         var section = jQuery($event.target).parent().parent();
         var nextSection = section.next('div.section');
 
@@ -112,10 +123,12 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
 
         if(nextSection.hasClass('section')) activateSection(nextSection);
         else finish();
+
     };
 
     // Activate a section
-    var activateSection = function(section) {
+    activateSection = function(section) {
+
         if(section.hasClass('closed')) {
             section.find('div.section-steps').slideToggle(200, callback);
         } else {
@@ -125,19 +138,38 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
         function callback() {
             section.removeClass('closed').addClass('open current');
         }
+
     };
 
     // Finish a section
-    var finishSection = function(section) {
+    finishSection = function(section) {
+
         section.find('div.section-steps').slideToggle(200, function() {
             section.removeClass('open current').addClass('closed finished');
         });
+
     };
 
     // Finish the route
-    var finish = function() {
+    finish = function() {
         alert('Finished!');
     };
+
+    // Save the GPS location
+    saveGps = function() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(savePostion);
+        }
+
+        function savePostion(position) {
+            var gps = position.coords.latitude + "," + position.coords.longitude;
+
+            travelersService.traveler.update({_id: localStorage['userId']}, { doc: { lastGpsLocation: gps } }, function (res) {
+                console.log(gps);
+            });
+        }
+    };
+    saveGps();
 
 });
 

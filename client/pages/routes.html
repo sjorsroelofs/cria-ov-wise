@@ -1,8 +1,12 @@
-<h1>Home!</h1>
 <a href="/#/logout">Uitloggen</a><br/>
-<a href="/#/help">Noodnummer bellen</a><br/>
-<br/>
-<h2>Selecteer een reis:</h2>
-<ul>
-    <li data-ng-repeat="route in traveler.doc.routes" ><a href="/#/travel/{{ route._id }}">{{ route.name }}</a></li>
-</ul>
+<div id="routes">
+    <ul>
+        <li data-ng-repeat="route in traveler.doc.routes" ><a href="/#/travel/{{ route._id }}">{{ route.name }}</a></li>
+    </ul>
+</div><!-- div#routes -->
+<div id="footer">
+    <ul>
+        <li><a href="#" class="speech">Spraak</a></li>
+        <li><a href="/#/help" class="emergency">Help!</a></li>
+    </ul>
+</div><!-- div#footer -->

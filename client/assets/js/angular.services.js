@@ -21,7 +21,8 @@ angular.module('travelerApp.services', ['ngResource'])
 
         function ($resource) {
             var actions = {
-                    'get': {method: 'GET'}
+                    'get': {method: 'GET'},
+                    'update': {method: 'PUT'}
                 },
                 db = {};
 
