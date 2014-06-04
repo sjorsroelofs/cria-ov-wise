@@ -81,15 +81,16 @@ travelerApp.controller('logoutController', function($scope, $location) {
 
 });
 
+
 travelerApp.controller('travelController', function($scope, $routeParams, $location, travelersService, travelerRouteService, ovdataService) {
 
-    var activateSection, finishSection, finish, saveGps;
+    var activateSection, finishSection, finish, saveGps, simulateSection;
 
     checkIfUserIsVerified($location);
 
     setInterval(function() {
         saveGps();
-    }, 5000);
+    }, 20000);
 
     $scope.routeDetails = travelerRouteService.route.get({userId: localStorage['userId'], routeId: $routeParams.routeId}, $scope.routeDetails, function (res) {
 
@@ -100,6 +101,81 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
         });
 
     });
+
+    simulateSection = function() {
+
+        window.setTimeout(function() {
+            var sectionToSimulate    = jQuery('div.section.current');
+            var sectionProgressBar   = jQuery('div.progress-bar', sectionToSimulate);
+            var elementToSlide       = jQuery('div.current-position', sectionProgressBar);
+
+            elementToSlide.animate({'margin-left': '95%'}, 20000, 'linear', function() {
+                $scope.goToNextSection(false, sectionToSimulate);
+            });
+        }, 2000);
+
+    };
+
+    $scope.travelPartialLoaded = function(index, type, dest, elementId) {
+
+        if(index === 1) {
+            simulateSection(elementId);
+        }
+
+        if(type === 'walking') {
+
+            var rendererOptions = { draggable: false };
+            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+            var directionsService = new google.maps.DirectionsService();
+            var map;
+
+            if(navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(positionCallback);
+            }
+
+            function positionCallback(position) {
+                var gps = position.coords.latitude + ", " + position.coords.longitude;
+                var centerPoint = new google.maps.LatLng(gps);
+                var mapOptions = {
+                    zoom: 20,
+                    center: centerPoint
+                };
+
+                map = new google.maps.Map(document.getElementById(elementId), mapOptions);
+                directionsDisplay.setMap(map);
+
+                var request = {
+                    origin: gps,
+                    destination: dest,
+                    travelMode: google.maps.TravelMode.WALKING
+                };
+
+                directionsService.route(request, function(response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+
+            }
+
+        }
+
+    };
+
+    startRoute = function() {
+
+        // Add a new routeLog record to the route with ID $routeParams.routeId
+        //var newRouteLog = travelerRouteDataService.routeData.save({}, );
+
+//        mentorsService.mentors.save({}, $scope.mentors.doc, function (res) {
+//            if (res.err === null) {
+//                $location.path('/mentors/' + res.doc._id);
+//            } else {
+//                $scope.save.createStatus = false;
+//            }
+//        });
+
+    };
 
     // Slide the section title
     $scope.handleSectionTitleClick = function($event) {
@@ -114,14 +190,16 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
     };
 
     // Go to the next section
-    $scope.goToNextSection = function($event) {
+    $scope.goToNextSection = function($event, section) {
 
-        var section = jQuery($event.target).parent().parent();
+        if(typeof section == 'undefined') var section = jQuery($event.target).parent().parent();
         var nextSection = section.next('div.section');
 
         finishSection(section);
 
-        if(nextSection.hasClass('section')) activateSection(nextSection);
+        if(nextSection.hasClass('section')) {
+            activateSection(nextSection);
+        }
         else finish();
 
     };
@@ -137,6 +215,7 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
 
         function callback() {
             section.removeClass('closed').addClass('open current');
+            simulateSection();
         }
 
     };

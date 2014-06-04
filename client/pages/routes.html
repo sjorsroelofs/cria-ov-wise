@@ -1,7 +1,9 @@
-<a href="/#/logout">Uitloggen</a><br/>
+<a class="logout" href="/#/logout">Uitloggen</a><br/>
 <div id="routes">
     <ul>
-        <li data-ng-repeat="route in traveler.doc.routes" ><a href="/#/travel/{{ route._id }}">{{ route.name }}</a></li>
+        <li data-ng-repeat="route in traveler.doc.routes" class="{{ route.name }}">
+            <a href="/#/travel/{{ route._id }}"><span>{{ route.name }}</span></a>
+        </li>
     </ul>
 </div><!-- div#routes -->
 <div id="footer">

@@ -54,6 +54,7 @@
 
     <hr/>
 
+    <div class="row"></div>
     <h4>Noodnummers:</h4>
     <button class="btn btn-success btn-sm" data-ng-click="addEmergencyNumber()">Noodnummer toevoegen</button><br/><br/>
     <table class="table">
@@ -94,6 +95,24 @@
             <td>Medaille behaald op:</td>
             <td><input type="text" data-ng-model="badge.achievedDate"></td>
         </tr>
+        </tbody>
+    </table>
+
+    <hr/>
+
+    <h4>Route logs:</h4>
+    <table data-ng-repeat="route in travelers.doc.routes" class="table">
+        <tbody>
+            <tr data-ng-repeat="log in route.routeLog">
+                <td>Route:</td>
+                <td><input type="text" data-ng-model="route.name"></td>
+                <td>Starttijd:</td>
+                <td><input type="text" data-ng-model="log.starttime"></td>
+                <td>Duur:</td>
+                <td><input type="text" data-ng-model="log.duration"></td>
+                <td>Voltooid?:</td>
+                <td><input type="text" data-ng-model="log.completed"></td>
+            </tr>
         </tbody>
     </table>
 

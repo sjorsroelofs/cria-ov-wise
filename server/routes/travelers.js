@@ -20,6 +20,9 @@ module.exports = function(app) {
     // Update a mentor
     app.route('/travelers/:_id').put(controller.update);
 
+    // Add a routeLog to a route
+    // app.route('/travelers/routeLog/:routeId').get(controller.routeDetail);
+
     // Delete a mentor
     app.route('/travelers/:_id').delete(controller.delete);
 

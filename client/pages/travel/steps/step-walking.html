@@ -1,6 +1,14 @@
 <div class="section-title" data-ng-click="handleSectionTitleClick($event)">Loop naar {{ step.destination }}</div>
     <div class="section-steps">
-        Stapjess
+        <div class="progress-bar">
+            <div class="inner">
+                <div class="second-inner">
+                    <div class="directions left">70 meter</div>
+                    <div class="current-position"></div>
+                </div>
+            </div>
+        </div>
+        <div class="map-container" id="map{{ $index }}"></div>
         <div class="button arrived" data-ng-click="goToNextSection($event)">Ik ben er!</div>
     </div>
 </div>

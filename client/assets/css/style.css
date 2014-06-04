@@ -39,6 +39,15 @@ p {
     padding: 10px 0;
 }
 
+a.logout {
+    display: inline-block;
+    background: #f27049;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 5px 22px;
+    margin: 20px;
+}
+
 
 /**
  * Container
@@ -56,7 +65,7 @@ div.container {
  * Routes
  */
 div#routes {
-
+    padding-bottom: 105px;
 }
 
 div#routes ul {
@@ -71,12 +80,44 @@ div#routes ul li {
 
 div#routes ul li a {
     display: block;
-    margin: 1px;
+    margin: 5px;
+    padding: 95px 0 0;
     background: #95bc4a;
     font-size: 20px;
-    padding: 30px 20px;
     text-decoration: none;
     text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+div#routes ul li a span {
+    display: block;
+    padding: 5px 20px;
+    background: #86ad3d;
+}
+
+div#routes ul li.Huis {
+    width: 100%;
+}
+
+div#routes ul li.Huis a {
+    background: url('../images/house-icon.png') no-repeat center 10px #95bc4a;
+}
+
+div#routes ul li.School a {
+    background: url('../images/school-icon.png') no-repeat center 10px #95bc4a;
+}
+
+div#routes ul li.Werk a {
+    background: url('../images/work-icon.png') no-repeat center 10px #95bc4a;
+}
+
+div#routes ul li.Oma a {
+    background: url('../images/woman-icon.png') no-repeat center 10px #95bc4a;
+}
+
+div#routes ul li.Truus a {
+    background: url('../images/woman-2-icon.png') no-repeat center 10px #95bc4a;
 }
 
 
@@ -84,9 +125,25 @@ div#routes ul li a {
  * Top bar
  */
 div#top-bar {
-    background: #eee;
-    padding: 20px;
-    border-bottom: 1px solid #fff;
+    background: #94bb47;
+    padding: 10px 20px;
+    font-size: 28px;
+    overflow: auto;
+}
+
+div#top-bar a.button-stop {
+    display: block;
+    float: left;
+    background: #f27049;
+    font-size: 22px;
+    text-decoration: none;
+    padding: 5px 22px;
+    margin: 0 20px 0 0;
+}
+
+div#top-bar span.destination {
+    float: left;
+    margin: 3px 0 0;
 }
 
 /**
@@ -94,12 +151,12 @@ div#top-bar {
  */
 div#route-guide {
     min-height: 100%;
-    padding-bottom: 70px;
+    padding-bottom: 93px;
 }
 
-div#route-guide div.section {
-    -webkit-box-shadow: 0 0 5px 0 #000;
-    box-shadow: 0 0 5px 0 #000;
+div#route-guide div.map-container{
+    width: 100%;
+    height: 300px;
 }
 
 div#route-guide div.section.closed {
@@ -107,26 +164,38 @@ div#route-guide div.section.closed {
 }
 
 div#route-guide div.section div.section-title {
-    background: #3199d5;
+    background-color: #3199d5;
     color: #fff;
     font-size: 0.9em;
-    padding: 15px;
+    padding: 15px 15px 15px 65px;
     cursor: pointer;
+    -webkit-box-shadow: 0 0 5px 0 #000;
+    box-shadow: 0 0 5px 0 #000;
+}
+
+div#route-guide div.section.walking div.section-title {
+    background: url('../images/walking-icon.png') no-repeat 22px center #3199d5;
+}
+
+div#route-guide div.section.bus div.section-title {
+    background: url('../images/bus-icon.png') no-repeat 15px center #3199d5;
+}
+
+div#route-guide div.section.train div.section-title {
+    background: url('../images/train-icon.png') no-repeat 15px center #3199d5;
 }
 
 div#route-guide div.section.current div.section-title {
-    background: #4fa7d9;
-    padding: 15px;
+    background-color: #4fa7d9;
     font-size: 1.2em;
 }
 
 div#route-guide div.section.finished div.section-title {
-    padding: 15px;
-    background: #47a447;
+    background-color: #47a447;
 }
 
 div#route-guide div.section div.section-steps {
-    padding: 20px;
+
 }
 
 div#route-guide div.section.closed div.section-steps {
@@ -154,6 +223,38 @@ div#route-guide div.section div.section-steps div.button.arrived {
     margin-top: 20px;
 }
 
+div#route-guide div.progress-bar {
+    -webkit-box-shadow: 0 0 5px 0 #000;
+    box-shadow: 0 0 5px 0 #000;
+    background: url('../images/process-line.png') repeat-x 0 45px #4fa7d9;
+}
+
+div#route-guide div.progress-bar div.inner {
+    background: url('../images/arrow-icon.png') no-repeat 15px center transparent;
+}
+
+div#route-guide div.progress-bar div.second-inner {
+    height: 60px;
+    /*padding: 10px 0;*/
+    margin: 0 15px 0 0;
+    background: url('../images/finish-icon.png') no-repeat right center transparent;
+}
+
+div#route-guide div.progress-bar div.directions {
+    text-align: center;
+    height: 27px;
+    font-size: 22px;
+    padding: 8px 0 0;
+}
+
+div#route-guide div.progress-bar div.current-position {
+    position: relative;
+    margin-left: 2%;
+    width: 32px;
+    height: 20px;
+    background: url('../images/current-position-icon.png') no-repeat 0 0 transparent;
+}
+
 
 /**
  * Footer
@@ -177,19 +278,22 @@ div#footer ul li {
 div#footer ul li a {
     display: block;
     font-size: 25px;
-    height: 60px;
     color: #fff;
     text-align: center;
     text-decoration: none;
-    padding: 0 20px;
+    letter-spacing: 1px;
 }
 
 div#footer ul li a.speech {
-    background: #f47e53;
+    height: 40px;
     margin-right: 1px;
+    background: url('../images/speech-icon.png') no-repeat center 10px #f47e53;
+    padding: 52px 0 0;
 }
 
 div#footer ul li a.emergency {
-    background: #f56e48;
+    height: 40px;
     margin-left: 1px;
+    background: url('../images/warning-icon.png') no-repeat center 10px #f56e48;
+    padding: 52px 0 0;
 }

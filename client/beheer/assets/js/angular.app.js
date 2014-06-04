@@ -109,17 +109,17 @@ mentorApp.controller('mentorController', function($scope, $http, $location, $rou
     $scope.update = function () {
         console.log('Entering update');
         mentorsService.mentors.update({_id: $scope.mentors.doc._id}, $scope.mentors, function (res) {});
-    }
+    };
 
     $scope.delete = function () {
         mentorsService.mentors.delete({_id: $routeParams._id});
         $location.path('/mentors');
-    }
+    };
 
     $scope.addTraveler = function () {
         var travelerBlueprint = {
             _id: ""
-        }
+        };
 
         $scope.mentors.doc.travelers.push(travelerBlueprint);
     }
@@ -254,7 +254,7 @@ mentorApp.controller('routeController', function($scope, $http, $location, $rout
     $scope.update = function () {
         console.log('Entering update');
         routesService.routes.update({_id: $scope.routes.doc._id}, $scope.routes, function (res) {});
-    }
+    };
 
     $scope.delete = function () {
         routesService.routes.delete({_id: $routeParams._id});

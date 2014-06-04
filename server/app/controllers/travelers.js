@@ -37,9 +37,9 @@ exports.list = function(req, res) {
 
     console.log('GET Travelers.');
 
-    conditions = {};
-    fields = {};
-    sort = {'registrationDate': -1};
+    conditions   = {};
+    fields       = {};
+    sort         = { 'registrationDate': -1 };
 
     Traveler
         .find(conditions, fields, options)
@@ -66,9 +66,9 @@ exports.detail = function(req, res) {
 
     console.log('GET Traveler with id ' + req.params._id);
 
-    conditions = req.params._id
-        , fields = {}
-        , options = {'registrationDate': -1};
+    conditions   = req.params._id,
+    fields       = {},
+    options      = {'registrationDate': -1};
 
     Traveler
         .findById(conditions, fields, options)
@@ -94,9 +94,9 @@ exports.routeDetail = function(req, res) {
 
     console.log('GET Route with id ' + req.params.routeId + ' from Traveler with id ' + req.params.userId);
 
-    conditions = req.params.userId,
-        fields = {},
-        options = {};
+    conditions   = req.params.userId,
+    fields       = {},
+    options      = {};
 
     Traveler
         .findOne({ 'routes._id' : req.params.routeId }, function(err, traveler) {
@@ -144,19 +144,20 @@ exports.update = function(req, res) {
 
     };
 
-    if(req.body.doc.firstname) update.firstname = req.body.doc.firstname;
-    if(req.body.doc.lastname) update.lastname = req.body.doc.lastname;
-    if(req.body.doc.username) update.username = req.body.doc.username;
-    if(req.body.doc.email) update.email = req.body.doc.email;
-    if(req.body.doc.password) update.password = req.body.doc.password;
-    if(req.body.doc.phone) update.phone = req.body.doc.phone;
-    if(req.body.doc.userPoints) update.userPoints = req.body.doc.userPoints;
-    if(req.body.doc.lastGpsLocation) update.lastGpsLocation = req.body.doc.lastGpsLocation;
-    if(req.body.doc.facebookOauthToken) update.facebookOauthToken = req.body.doc.facebookOauthToken;
-    if(req.body.doc.twitterOauthToken) update.twitterOauthToken = req.body.doc.twitterOauthToken;
-    if(req.body.doc.badges) update.badges = req.body.doc.badges;
-    if(req.body.doc.emergencyNumbers) update.emergencyNumbers = req.body.doc.emergencyNumbers;
-    if(req.body.doc.routes) update.routes = req.body.doc.routes;
+    if(req.body.doc.firstname) update.firstname                     = req.body.doc.firstname;
+    if(req.body.doc.lastname) update.lastname                       = req.body.doc.lastname;
+    if(req.body.doc.username) update.username                       = req.body.doc.username;
+    if(req.body.doc.email) update.email                             = req.body.doc.email;
+    if(req.body.doc.password) update.password                       = req.body.doc.password;
+    if(req.body.doc.phone) update.phone                             = req.body.doc.phone;
+    if(req.body.doc.userPoints) update.userPoints                   = req.body.doc.userPoints;
+    if(req.body.doc.lastGpsLocation) update.lastGpsLocation         = req.body.doc.lastGpsLocation;
+    if(req.body.doc.facebookOauthToken) update.facebookOauthToken   = req.body.doc.facebookOauthToken;
+    if(req.body.doc.twitterOauthToken) update.twitterOauthToken     = req.body.doc.twitterOauthToken;
+    if(req.body.doc.badges) update.badges                           = req.body.doc.badges;
+    if(req.body.doc.emergencyNumbers) update.emergencyNumbers       = req.body.doc.emergencyNumbers;
+    if(req.body.doc.routes) update.routes                           = req.body.doc.routes;
+    if(req.body.doc.routeData) update.routeData                     = req.body.doc.routeData;
 
     Traveler.findByIdAndUpdate(conditions, update, options, callback);
 };
@@ -172,18 +173,18 @@ exports.delete = function(req, res) {
 
     console.log('Deleting Traveler. ', req.params._id);
 
-    conditions = {_id: req.params._id}
-        , callback = function(err, doc) {
+    conditions   = {_id: req.params._id},
+    callback     = function(err, doc) {
 
-            retObj = {
-                meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
-                doc: doc,
-                err: err
-            };
+        retObj = {
+            meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
+            doc: doc,
+            err: err
+        };
 
-            return res.send(retObj);
+        return res.send(retObj);
 
-        }
+    };
 
     Traveler.remove(conditions, callback);
 };
