@@ -1,5 +1,5 @@
 <div id="top-bar">
-    <a href="/#/" class="button-stop">Stop</a>
+    <a href="/#/" class="button-stop">Terug</a>
     <span class="destination">Naar {{ routeDetails.doc.name }}</span>
 </div><!-- div#top-bar -->
 
@@ -10,7 +10,8 @@
          ng-class="{current : $first, open: $first, closed: !$first}"
          ng-include
          src="'pages/travel/steps/step-' + step.type + '.html'"
-         onload="travelPartialLoaded($index, step.type, step.destination, 'map' + $index);">
+         onload="travelPartialLoaded($index, step.type, step.destination, 'map' + $index);"
+         data-destination="{{ step.destination }}">
     </div>
 
 </div><!-- div#route-guide -->

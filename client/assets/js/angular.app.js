@@ -84,7 +84,7 @@ travelerApp.controller('logoutController', function($scope, $location) {
 
 travelerApp.controller('travelController', function($scope, $routeParams, $location, travelersService, travelerRouteService, ovdataService) {
 
-    var activateSection, finishSection, finish, saveGps, simulateSection;
+    var activateSection, finishSection, finish, saveGps, simulateSection, initGoogleMaps;
 
     checkIfUserIsVerified($location);
 
@@ -109,19 +109,17 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
             var sectionProgressBar   = jQuery('div.progress-bar', sectionToSimulate);
             var elementToSlide       = jQuery('div.current-position', sectionProgressBar);
 
-            elementToSlide.animate({'margin-left': '95%'}, 25000, 'linear', function() {
+            elementToSlide.animate({'margin-left': '95%'}, 40000, 'linear', function() {
                 window.setTimeout(function() {
                     $scope.goToNextSection(false, sectionToSimulate);
                 }, 2000);
             });
 
-
-
             if(sectionToSimulate.hasClass('bus') || sectionToSimulate.hasClass('train')) {
                 var stepTicker        = jQuery('div.step-ticker', sectionToSimulate);
                 var stepTickerInner   = jQuery('div.inner', stepTicker);
 
-                stepTickerInner.animate({'margin-left': '-953px'}, 20000, 'linear');
+                stepTickerInner.animate({'margin-left': '-953px'}, 30000, 'linear');
             }
 
         }, 2000);
@@ -130,47 +128,51 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
 
     $scope.travelPartialLoaded = function(index, type, dest, elementId) {
 
-        if(index === 1) {
+        if(index === 0) {
             simulateSection(elementId);
+
+            if(type === 'walking') {
+                initGoogleMaps(dest, elementId);
+            }
         }
 
-        if(type === 'walking') {
+    };
 
-            var rendererOptions = { draggable: false };
-            var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-            var directionsService = new google.maps.DirectionsService();
-            var map;
+    initGoogleMaps = function(dest, elementId) {
 
-            if(navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(positionCallback);
-            }
-
-            function positionCallback(position) {
-                var gps = position.coords.latitude + ", " + position.coords.longitude;
-                var centerPoint = new google.maps.LatLng(gps);
-                var mapOptions = {
-                    zoom: 20,
-                    center: centerPoint
-                };
-
-                map = new google.maps.Map(document.getElementById(elementId), mapOptions);
-                directionsDisplay.setMap(map);
-
-                var request = {
-                    origin: gps,
-                    destination: dest,
-                    travelMode: google.maps.TravelMode.WALKING
-                };
-
-                directionsService.route(request, function(response, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
-
-            }
-
-        }
+//        var rendererOptions = { draggable: false };
+//        var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+//        var directionsService = new google.maps.DirectionsService();
+//        var map;
+//
+//        if(navigator.geolocation) {
+//            navigator.geolocation.getCurrentPosition(positionCallback);
+//        }
+//
+//        function positionCallback(position) {
+//            var gps = position.coords.latitude + ", " + position.coords.longitude;
+//            var centerPoint = new google.maps.LatLng(gps);
+//            var mapOptions = {
+//                zoom: 20,
+//                center: centerPoint
+//            };
+//
+//            map = new google.maps.Map(document.getElementById(elementId), mapOptions);
+//            directionsDisplay.setMap(map);
+//
+//            var request = {
+//                origin: gps,
+//                destination: dest,
+//                travelMode: google.maps.TravelMode.WALKING
+//            };
+//
+//            directionsService.route(request, function(response, status) {
+//                if (status == google.maps.DirectionsStatus.OK) {
+//                    directionsDisplay.setDirections(response);
+//                }
+//            });
+//
+//        }
 
     };
 
@@ -197,6 +199,11 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
         section.find('div.section-steps').slideToggle(200, function() {
             if(section.hasClass('open')) section.removeClass('open').addClass('closed');
             else section.removeClass('closed').addClass('open');
+
+            if(section.hasClass('walking')) {
+                console.log(section.attr('data-destination'));
+                initGoogleMaps(section.attr('data-destination'), section.find('.map-container').attr('id'));
+            }
         });
 
     };
@@ -228,6 +235,9 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
         function callback() {
             section.removeClass('closed').addClass('open current');
             simulateSection();
+            if(section.hasClass('walking')) {
+                initGoogleMaps(section.attr('data-destination'), section.find('.map-container').attr('id'));
+            }
         }
 
     };

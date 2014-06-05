@@ -125,10 +125,15 @@ div#routes ul li.Truus a {
  * Top bar
  */
 div#top-bar {
+    width: 100%;
+    max-width: 560px;
     background: #94bb47;
     padding: 10px 20px;
     font-size: 28px;
     overflow: auto;
+    position: fixed;
+    z-index: 999;
+    top: 0;
 }
 
 div#top-bar a.button-stop {
@@ -159,8 +164,17 @@ div#route-guide div.map-container{
     height: 300px;
 }
 
+div#route-guide {
+    margin-top: 57px;
+}
+
 div#route-guide div.section.closed {
 
+}
+
+div#route-guide div.section.current div.section-title,
+div#route-guide div.section.completed div.section-title{
+    opacity: 1;
 }
 
 div#route-guide div.section div.section-title {
@@ -171,6 +185,7 @@ div#route-guide div.section div.section-title {
     cursor: pointer;
     -webkit-box-shadow: 0 0 5px 0 #000;
     box-shadow: 0 0 5px 0 #000;
+    opacity: 0.4;
 }
 
 div#route-guide div.section.walking div.section-title {
@@ -260,6 +275,12 @@ div#route-guide div.step-ticker {
     overflow: hidden;
 }
 
+div#route-guide div.step-ticker div.arrow {
+    width: 100%;
+    height: 13px;
+    background: url('../images/arrow-down.png') no-repeat center 0 transparent;
+}
+
 div#route-guide div.step-ticker div.inner {
     position: relative;
     overflow: auto;
@@ -271,7 +292,7 @@ div#route-guide div.step-ticker div.step {
     float: left;
     width: 170px;
     height: 160px;
-    margin: 20px;
+    margin: 10px 20px 20px;
     background: #95bc49;
 }
 
@@ -320,9 +341,11 @@ div#route-guide div.step-ticker div.step.step5 {
  * Footer
  */
 div#footer {
-    position: absolute;
+    position: fixed;
     width: 100%;
+    max-width: 600px;
     bottom: 0;
+    z-index: 999;
 }
 
 div#footer ul {
