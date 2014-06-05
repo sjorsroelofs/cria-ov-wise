@@ -1,0 +1,74 @@
+<div id="top-bar">
+    <a href="/#/" class="button-stop">Terug</a>
+    <span class="destination">Mijn Score</span>
+</div>
+
+<div id="score-stats-outside-wrapper">
+    <div id="score-stats-inside-wrapper">
+        <h1>{{traveler.doc.firstname}} {{traveler.doc.lastname}}</h1>
+
+        <div id="score-stats-inside-wrapper-left">
+            <p>
+                Tijd<br />
+                gereisd:
+            </p>
+            <p>
+                12 uur en <br/>
+                16 minuten
+            </p>
+        </div>
+        <div id="score-stats-inside-wrapper-middle">
+            <div id="middle-circle">
+                <p class="big">
+                    Totaal: <br />
+                    {{traveler.doc.userPoints}} punten!
+                </p>
+            </div>
+        </div>
+        <div id="score-stats-inside-wrapper-right">
+            <p>
+                Aantal<br />
+                kilometers:
+            </p>
+            <p>
+                514 kilometer
+            </p>
+        </div>
+        <div style="clear:both;"></div><!-- quick solution for solving bg-img problem (clearfix) -->
+        <!-- data-ng-model Data ophalen uit dB -->
+    </div>
+    <div id="received-medals">
+        <h1>Behaalde medailles</h1>
+        <div class="medal-bg-wrapper-green">
+            <a class="first-medal-icon" href="#"><img src="../assets/images/medal-medal-icon.png" width="90" height="100"/></a>
+        </div>
+        <div class="medal-bg-wrapper-blue">
+            <a href="#"><img src="../assets/images/medal-star-icon.png" width="90" height="100"/></a>
+        </div>
+        <div class="medal-bg-wrapper-green">
+            <a href="#"><img src="../assets/images/medal-medal-icon.png" width="90" height="100"/></a>
+        </div>
+        <div class="medal-bg-wrapper-blue">
+            <a class="last-medal-icon" href="#"><img src="../assets/images/medal-cup-icon.png" width="90" height="100"/></a>
+        </div>
+        <div style="clear:both;"></div><!-- quick solution for solving bg-img problem (clearfix) -->
+    </div>
+    <div id="share-medals">
+        <h2>Delen!</h2>
+        <div class="share-icon">
+            <div class="share-bg-wrapper-blue">
+                <a class="first-share-icon" href="#"><img src="../assets/images/facebook-icon.png" width="90" height="100" href="#"/><!--<br />Facebook--></a>
+            </div>
+            <div class="share-bg-wrapper-blue">
+                <a href="#"><img src="../assets/images/twitter-icon.png" width="90" height="100" href="#"/><!--<br />Twitter--></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <ul>
+        <li><a href="#" class="speech">Spraak</a></li>
+        <li><a href="/#/help" class="emergency">Help!</a></li>
+    </ul>
+</div>

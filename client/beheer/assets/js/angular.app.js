@@ -80,7 +80,6 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/routes/detail.html',
             controller: 'routeController'
         })
-
         // Redirect to home
         .otherwise({
             redirectTo: '/'

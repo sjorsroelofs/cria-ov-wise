@@ -33,6 +33,11 @@ travelerApp.config(function($routeProvider) {
             controller: 'emergencyController'
         })
 
+        .when('/scores', {
+            templateUrl: 'pages/scores.html',
+            controller: 'scoresController'
+        })
+
         // Redirect to home
         .otherwise({
             redirectTo: '/'
@@ -253,7 +258,7 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
 
     // Finish the route
     finish = function() {
-        alert('Finished!');
+        //alert('Finished!');
     };
 
     // Save the GPS location
@@ -284,6 +289,14 @@ travelerApp.controller('emergencyController', function($scope, $location, travel
 
 });
 
+travelerApp.controller('scoresController', function($scope, $location, travelersService) {
+
+    checkIfUserIsVerified($location);
+
+    $scope.traveler = travelersService.traveler.get({_id: localStorage['userId']}, $scope.traveler, function (res) {
+        console.log($scope.traveler);
+    });
+});
 
 /**
  * Check if the user is verified. If not, redirect to the login page

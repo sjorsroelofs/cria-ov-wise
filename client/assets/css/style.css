@@ -170,6 +170,103 @@ div.top-bar-btm-margin {
     margin-bottom:30px;
 }
 
+
+/**
+* Scores
+*/
+div#score-stats-outside-wrapper {
+    background: url('../images/blue-bg.png') repeat-x top left;
+    width:100%;
+}
+
+div#score-stats-inside-wrapper {
+    /*background: url('../images/green-circle2.png') no-repeat 0 0;*/
+    width:100%;
+}
+
+div#score-stats-inside-wrapper h1 {
+    padding-top:20px;
+    text-align: center;
+    margin:0;
+}
+
+div#score-stats-inside-wrapper-left {
+    width:25%;
+    float:left;
+    margin-top:140px;
+}
+
+div#score-stats-inside-wrapper-middle {
+    float:left;
+    text-align:center;
+    margin-top:20px;
+    width:50%;
+}
+
+div#middle-circle {
+    width:250px;
+    height:250px;
+    -moz-border-radius:125px;
+    -webkit-border-radius: 125px;
+    background-color: #94bb47;
+    margin:0 auto;
+}
+div#score-stats-inside-wrapper-middle p {
+    font-size: 30px;
+    padding-top:80px;
+}
+
+div#score-stats-inside-wrapper-right {
+    width:25%;
+    float:left;
+    margin-top:140px;
+}
+
+div#score-stats-inside-wrapper-right p {
+    text-align:right;
+}
+
+div#received-medals {
+    margin:20px 0;
+}
+
+div#received-medals h1,
+div#share-medals h2 {
+   text-align:center;
+}
+
+div#share-medals h2 {
+    width:50%;
+}
+
+div#received-medals .medal-bg-wrapper-green a,
+div#received-medals .medal-bg-wrapper-blue a,
+.share-bg-wrapper-blue a {
+    float:left;
+    width:23%;
+    margin-right:2%;
+    text-align: center;
+}
+
+div#received-medals .medal-bg-wrapper-green a.first-medal-icon,
+a.first-share-icon {
+    margin-left:1%;
+}
+
+div#received-medals .medal-bg-wrapper-blue a.last-medal-icon {
+    margin-right:1%;
+}
+
+.medal-bg-wrapper-green a {
+    background-color:#94bb47;
+}
+
+.medal-bg-wrapper-blue a,
+.share-bg-wrapper-blue a {
+    background-color:#4fa8db;
+    text-decoration: none;
+}
+
 /**
  * Top bar
  */
