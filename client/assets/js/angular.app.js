@@ -109,9 +109,21 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
             var sectionProgressBar   = jQuery('div.progress-bar', sectionToSimulate);
             var elementToSlide       = jQuery('div.current-position', sectionProgressBar);
 
-            elementToSlide.animate({'margin-left': '95%'}, 20000, 'linear', function() {
-                $scope.goToNextSection(false, sectionToSimulate);
+            elementToSlide.animate({'margin-left': '95%'}, 25000, 'linear', function() {
+                window.setTimeout(function() {
+                    $scope.goToNextSection(false, sectionToSimulate);
+                }, 2000);
             });
+
+
+
+            if(sectionToSimulate.hasClass('bus') || sectionToSimulate.hasClass('train')) {
+                var stepTicker        = jQuery('div.step-ticker', sectionToSimulate);
+                var stepTickerInner   = jQuery('div.inner', stepTicker);
+
+                stepTickerInner.animate({'margin-left': '-953px'}, 20000, 'linear');
+            }
+
         }, 2000);
 
     };
