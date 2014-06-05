@@ -1,4 +1,16 @@
-<h1>Noodnummers</h1>
-<ul>
-    <li data-ng-repeat="number in traveler.doc.emergencyNumbers"><a href="tel:{{ number.number }}">{{ number.name }}</a></li>
-</ul>
+<div id="top-bar" class="top-bar-btm-margin">
+    <a href="/#/" class="button-stop">Terug</a>
+    <span class="destination">Hulp Nodig?</span>
+</div>
+
+<div id="help">
+    <ul>
+        <li data-ng-repeat="number in traveler.doc.emergencyNumbers" class="{{ number.name }}" ><a href="tel:{{ number.number }}">Bel {{ number.name }}</a></li>
+    </ul>
+</div>
+<div id="footer">
+    <ul>
+        <li><a href="#" class="speech">Spraak</a></li>
+        <li><a href="/#/help" class="emergency">Help!</a></li>
+    </ul>
+</div>
