@@ -64,15 +64,18 @@ div.container {
 /**
  * Routes
  */
-div#routes {
+div#routes,
+div#help {
     padding-bottom: 105px;
 }
 
-div#routes ul {
+div#routes ul,
+div#help ul {
     overflow: auto;
 }
 
-div#routes ul li {
+div#routes ul li,
+div#help ul li {
     display: block;
     float: left;
     width: 50%;
@@ -116,10 +119,56 @@ div#routes ul li.Oma a {
     background: url('../images/woman-icon.png') no-repeat center 10px #95bc4a;
 }
 
-div#routes ul li.Truus a {
+div#routes ul li.Truus  {
     background: url('../images/woman-2-icon.png') no-repeat center 10px #95bc4a;
 }
 
+/**
+* Help
+*/
+h1.nood {
+    margin-top:0;
+    padding:10px;
+    background-color:#94bb47;
+    margin-bottom:20px;
+}
+
+div#help ul li a {
+    display: block;
+    padding: 45px 0 45px 130px;
+    font-size: 25px;
+    text-decoration: none;
+    text-align: left;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+div#help ul li {
+    width:100%;
+    margin-bottom:30px;
+}
+
+div#help ul li.Mama,
+div#help ul li.Papa,
+div#help ul li.Begeleider {
+    background: url('../images/phone-icon.png') no-repeat 40px 30px #50aae5;
+}
+
+div#help ul li.Mama a {
+    background: url('../images/mama-profile-picture.png') no-repeat right 0;
+}
+
+div#help ul li.Papa a {
+    background: url('../images/papa-profile-picture.png') no-repeat right 0;
+}
+
+div#help ul li.Begeleider a {
+    background: url('../images/begeleider-profile-picture.png') no-repeat right 0;
+}
+
+div.top-bar-btm-margin {
+    margin-bottom:30px;
+}
 
 /**
  * Top bar
