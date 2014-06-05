@@ -224,9 +224,9 @@ div#route-guide div.section div.section-steps div.button.arrived {
 }
 
 div#route-guide div.progress-bar {
-    -webkit-box-shadow: 0 0 5px 0 #000;
-    box-shadow: 0 0 5px 0 #000;
-    background: url('../images/process-line.png') repeat-x 0 45px #4fa7d9;
+    background: url('../images/process-line.png') repeat-x 0 45px #2b8fc8;
+    -webkit-box-shadow: inset 0 0 5px 0 #222;
+    box-shadow: inset 0 0 5px 0 #222;
 }
 
 div#route-guide div.progress-bar div.inner {
@@ -255,6 +255,66 @@ div#route-guide div.progress-bar div.current-position {
     background: url('../images/current-position-icon.png') no-repeat 0 0 transparent;
 }
 
+div#route-guide div.step-ticker {
+    height: 200px;
+    overflow: hidden;
+}
+
+div#route-guide div.step-ticker div.inner {
+    position: relative;
+    overflow: auto;
+    left: 50%;
+    margin-left: -105px;
+}
+
+div#route-guide div.step-ticker div.step {
+    float: left;
+    width: 170px;
+    height: 160px;
+    margin: 20px;
+    background: #95bc49;
+}
+
+div#route-guide div.step-ticker div.step.step1 {
+    background: url('../images/time-timer.png') no-repeat center 15px #95bc49;
+}
+
+div#route-guide div.step-ticker div.step.step1 span {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+    margin: 125px 0 0;
+}
+
+div#route-guide div.step-ticker div.step.step2 {
+    background: url('../images/kerk-image.jpg') no-repeat center center #95bc49;
+    background-size: 90%;
+}
+
+div#route-guide div.step-ticker div.step.step3 {
+    background: url('../images/arnhem-image.jpg') no-repeat center center #95bc49;
+}
+
+div#route-guide div.step-ticker div.step.step3 span,
+div#route-guide div.step-ticker div.step.step4 span,
+div#route-guide div.step-ticker div.step.step5 span{
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 99px 10px 0;
+    padding: 5px 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+div#route-guide div.step-ticker div.step.step4 {
+    background: url('../images/ov-image.jpg') no-repeat center 10px #95bc49;
+}
+
+div#route-guide div.step-ticker div.step.step5 {
+    background: url('../images/bus-stop-icon.png') no-repeat center 13px #95bc49;
+}
 
 /**
  * Footer

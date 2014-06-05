@@ -8,9 +8,20 @@
             </div>
         </div>
     </div>
-    <ul>
-        <li data-ng-repeat="stop in step.stops">{{ stop.arrival}} - {{ stop.name }}</li>
-    </ul>
+
+    <div class="step-ticker">
+        <div class="inner">
+            <div class="step step1"><span>Nog 10 minuten</span></div>
+            <div class="step step2"></div>
+            <div class="step step3"><span>Bij dit gebouw ben je er bijna</span></div>
+            <div class="step step4"><span>Pak alvast je OV kaart</span></div>
+            <div class="step step5"><span>Stap uit bij halte 'Het Dorp'</span></div>
+        </div>
+    </div>
+
+    <!--<ul>-->
+        <!--<li data-ng-repeat="stop in step.stops">{{ stop.arrival}} - {{ stop.name }}</li>-->
+    <!--</ul>-->
 
     <!--<div class="button arrived" data-ng-click="goToNextSection($event)">Ik ben er!</div>-->
 </div>
