@@ -266,6 +266,11 @@ div#received-medals {
     margin:20px 0;
 }
 
+div#share-medals {
+    margin-bottom:105px;
+    overflow:auto;
+}
+
 div#received-medals h1,
 div#share-medals h2 {
    text-align:center;
