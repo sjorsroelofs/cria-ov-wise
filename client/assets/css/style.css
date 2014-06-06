@@ -124,6 +124,36 @@ div#routes ul li.Truus  {
 }
 
 /**
+* Scores
+*/
+div#scores ul li.scores {
+    width:100%;
+    display:block;
+    float:left;
+}
+
+div#scores ul li.scores a {
+    display: block;
+    margin: 5px;
+    padding: 95px 0 0;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+div#scores ul li.scores a span {
+    background-color:#3081ae;
+    display:block;
+    padding:5px 20px;
+}
+
+div#routes ul li.scores a {
+    background: url('../images/cup-icon.png') no-repeat center 10px #4FA8DC;
+}
+
+/**
 * Help
 */
 
