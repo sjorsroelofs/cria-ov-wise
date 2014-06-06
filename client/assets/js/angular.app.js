@@ -277,6 +277,18 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
     };
     saveGps();
 
+    $scope.speakToMe = function() {
+
+        var textToSpeach = jQuery('div.section.current div.section-title').html();
+
+        textToSpeach = textToSpeach.replace(',', '');
+        textToSpeach = encodeURI(textToSpeach);
+
+        var audio = new Audio('http://translate.google.com/translate_tts?tl=nl&q=' + textToSpeach);
+        audio.play();
+
+    };
+
 });
 
 travelerApp.controller('emergencyController', function($scope, $location, travelersService) {

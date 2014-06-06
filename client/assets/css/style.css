@@ -119,7 +119,7 @@ div#routes ul li.Oma a {
     background: url('../images/woman-icon.png') no-repeat center 10px #95bc4a;
 }
 
-div#routes ul li.Truus  {
+div#routes ul li.Truus a {
     background: url('../images/woman-2-icon.png') no-repeat center 10px #95bc4a;
 }
 
@@ -319,7 +319,7 @@ div#route-guide div.section.closed {
 }
 
 div#route-guide div.section.current div.section-title,
-div#route-guide div.section.completed div.section-title{
+div#route-guide div.section.finished div.section-title {
     opacity: 1;
 }
 
