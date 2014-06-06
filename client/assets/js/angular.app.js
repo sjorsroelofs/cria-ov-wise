@@ -259,6 +259,7 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
     // Finish the route
     finish = function() {
         //alert('Finished!');
+        $location.path("/scores");
     };
 
     // Save the GPS location

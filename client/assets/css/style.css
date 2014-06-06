@@ -124,8 +124,43 @@ div#routes ul li.Truus a {
 }
 
 /**
+* Scores
+*/
+div#scores ul li.scores {
+    width:100%;
+    display:block;
+    float:left;
+}
+
+div#scores ul li.scores a {
+    display: block;
+    margin: 5px;
+    padding: 95px 0 0;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+div#scores ul li.scores a span {
+    background-color:#3081ae;
+    display:block;
+    padding:5px 20px;
+}
+
+div#routes ul li.scores a {
+    background: url('../images/cup-icon.png') no-repeat center 10px #4FA8DC;
+}
+
+/**
 * Help
 */
+
+div#help {
+    margin-top:57px;
+}
+
 h1.nood {
     margin-top:0;
     padding:10px;
@@ -176,6 +211,7 @@ div.top-bar-btm-margin {
 */
 div#score-stats-outside-wrapper {
     background: url('../images/blue-bg.png') repeat-x top left;
+    margin-top:57px;
     width:100%;
 }
 
@@ -228,6 +264,11 @@ div#score-stats-inside-wrapper-right p {
 
 div#received-medals {
     margin:20px 0;
+}
+
+div#share-medals {
+    margin-bottom:105px;
+    overflow:auto;
 }
 
 div#received-medals h1,
