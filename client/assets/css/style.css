@@ -83,8 +83,8 @@ div#help ul li {
 
 div#routes ul li a {
     display: block;
-    margin: 5px;
-    padding: 95px 0 0;
+    margin: 4px;
+    padding: 82px 0 0;
     background: #95bc4a;
     font-size: 20px;
     text-decoration: none;
@@ -95,7 +95,7 @@ div#routes ul li a {
 
 div#routes ul li a span {
     display: block;
-    padding: 5px 20px;
+    padding: 0 20px;
     background: #86ad3d;
 }
 
@@ -104,23 +104,23 @@ div#routes ul li.Huis {
 }
 
 div#routes ul li.Huis a {
-    background: url('../images/house-icon.png') no-repeat center 10px #95bc4a;
+    background: url('../images/house-icon.png') no-repeat center 3px #95bc4a;
 }
 
 div#routes ul li.School a {
-    background: url('../images/school-icon.png') no-repeat center 10px #95bc4a;
+    background: url('../images/school-icon.png') no-repeat center 3px #95bc4a;
 }
 
 div#routes ul li.Werk a {
-    background: url('../images/work-icon.png') no-repeat center 10px #95bc4a;
+    background: url('../images/work-icon.png') no-repeat center 3px #95bc4a;
 }
 
 div#routes ul li.Oma a {
-    background: url('../images/woman-icon.png') no-repeat center 10px #95bc4a;
+    background: url('../images/woman-icon.png') no-repeat center 3px #95bc4a;
 }
 
 div#routes ul li.Truus a {
-    background: url('../images/woman-2-icon.png') no-repeat center 10px #95bc4a;
+    background: url('../images/woman-2-icon.png') no-repeat center 3px #95bc4a;
 }
 
 /**
@@ -135,7 +135,7 @@ div#scores ul li.scores {
 div#scores ul li.scores a {
     display: block;
     margin: 5px;
-    padding: 95px 0 0;
+    padding: 82px 0 0;
     font-size: 20px;
     text-decoration: none;
     text-align: center;
@@ -144,13 +144,13 @@ div#scores ul li.scores a {
 }
 
 div#scores ul li.scores a span {
-    background-color:#3081ae;
-    display:block;
-    padding:5px 20px;
+    background-color: #3081ae;
+    display: block;
+    padding: 0 20px;
 }
 
 div#routes ul li.scores a {
-    background: url('../images/cup-icon.png') no-repeat center 10px #4FA8DC;
+    background: url('../images/cup-icon.png') no-repeat center 3px #4FA8DC;
 }
 
 /**
@@ -245,11 +245,25 @@ div#middle-circle {
     -moz-border-radius:125px;
     -webkit-border-radius: 125px;
     background-color: #94bb47;
-    margin:0 auto;
+    margin: 0 auto;
 }
 div#score-stats-inside-wrapper-middle p {
     font-size: 30px;
     padding-top:80px;
+}
+
+@media screen and (max-width: 500px) {
+
+    div#middle-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    div#score-stats-inside-wrapper-middle p {
+        font-size: 25px;
+        padding-top: 65px;
+    }
+
 }
 
 div#score-stats-inside-wrapper-right {
@@ -533,6 +547,7 @@ div#footer {
     max-width: 600px;
     bottom: 0;
     z-index: 999;
+    background: #000;
 }
 
 div#footer ul {
@@ -555,15 +570,15 @@ div#footer ul li a {
 }
 
 div#footer ul li a.speech {
-    height: 40px;
+    height: 30px;
     margin-right: 1px;
-    background: url('../images/speech-icon.png') no-repeat center 10px #f47e53;
+    background: url('../images/speech-icon.png') no-repeat center 5px #f47e53;
     padding: 52px 0 0;
 }
 
 div#footer ul li a.emergency {
-    height: 40px;
+    height: 30px;
     margin-left: 1px;
-    background: url('../images/warning-icon.png') no-repeat center 10px #f56e48;
+    background: url('../images/warning-icon.png') no-repeat center 5px #f56e48;
     padding: 52px 0 0;
 }
