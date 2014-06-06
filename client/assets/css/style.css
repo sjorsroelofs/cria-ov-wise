@@ -126,6 +126,11 @@ div#routes ul li.Truus  {
 /**
 * Help
 */
+
+div#help {
+    margin-top:57px;
+}
+
 h1.nood {
     margin-top:0;
     padding:10px;
@@ -176,6 +181,7 @@ div.top-bar-btm-margin {
 */
 div#score-stats-outside-wrapper {
     background: url('../images/blue-bg.png') repeat-x top left;
+    margin-top:57px;
     width:100%;
 }
 
