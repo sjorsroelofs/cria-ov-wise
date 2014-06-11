@@ -378,6 +378,10 @@ div#route-guide div.section.finished div.section-title {
     opacity: 1;
 }
 
+div#route-guide div.section.finished div.section-title {
+    display: none;
+}
+
 div#route-guide div.section div.section-title {
     background-color: #3199d5;
     color: #fff;

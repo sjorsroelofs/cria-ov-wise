@@ -114,7 +114,7 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
             var sectionProgressBar   = jQuery('div.progress-bar', sectionToSimulate);
             var elementToSlide       = jQuery('div.current-position', sectionProgressBar);
 
-            elementToSlide.animate({'margin-left': '95%'}, 40000, 'linear', function() {
+            elementToSlide.animate({'margin-left': '95%'}, 30000, 'linear', function() {
                 window.setTimeout(function() {
                     $scope.goToNextSection(false, sectionToSimulate);
                 }, 2000);
@@ -124,7 +124,7 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
                 var stepTicker        = jQuery('div.step-ticker', sectionToSimulate);
                 var stepTickerInner   = jQuery('div.inner', stepTicker);
 
-                stepTickerInner.animate({'margin-left': '-953px'}, 30000, 'linear');
+                stepTickerInner.animate({'margin-left': '-953px'}, 20000, 'linear');
             }
 
         }, 2000);

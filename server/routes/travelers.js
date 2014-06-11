@@ -2,7 +2,7 @@ module.exports = function(app) {
 
     var controller = require('../app/controllers/travelers.js');
 
-    // Create a mentor
+    // Create a traveler
     app.route('/travelers').post(controller.create);
 
     // Get all travelers
