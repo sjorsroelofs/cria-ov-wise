@@ -1,6 +1,43 @@
+<script type="text/javascript">
+    // Handle popup events for medal
+    $(document).ready(function(){
+
+        // call open function popup-div when medal div is clicked
+        $('.medal1').click( function(){
+            openMedalPopup();
+        });
+
+        // call close function popup-div when close div is clicked
+        $('.close-popup-box').click(function(){
+            closeMedalPopup();
+        });
+
+        // open medal popup-div function
+        function openMedalPopup() {
+            $('.popup-box').fadeIn("slow");
+            $('#score-stats-outside-wrapper').css({
+                "opacity": "0.3" //aanpassen
+            });
+        }
+
+        // close medal popup-div function
+        function closeMedalPopup() {
+            $('.popup-box').fadeOut("slow");
+            $('#score-stats-outside-wrapper').css({
+                "opacity": "1" //aanpassen
+            });
+        }
+    });
+</script>
 <div id="top-bar">
     <a href="/#/" class="button-stop">Terug</a>
     <span class="destination">Mijn Score</span>
+</div>
+<div class="popup-box">
+    <span class="image-bg"><img src="../assets/images/medal-medal-icon.png" width="50" height="60"/></span>
+    <h1>500 km medaille</h1>
+    <p>Je hebt 500 km afgelegd! gefeliciteerd! Je hebt daarom deze medaille verdient: de 500 km medaille! Deel hem met al je vrienden op Facebook of Twitter</p>
+    <a class="close-popup-box button-stop">Terug</a>
 </div>
 <div id="score-stats-outside-wrapper">
     <div id="score-stats-inside-wrapper">
@@ -38,7 +75,7 @@
     <div id="received-medals">
         <h1>Behaalde medailles</h1>
         <div class="medal-bg-wrapper-green">
-            <a class="first-medal-icon" href="#"><img src="../assets/images/medal-medal-icon.png" width="50" height="60"/></a>
+            <a class="first-medal-icon medal1"><img src="../assets/images/medal-medal-icon.png" width="50" height="60"/></a>
         </div>
         <div class="medal-bg-wrapper-blue">
             <a href="#"><img src="../assets/images/medal-star-icon.png" width="50" height="60"/></a>
