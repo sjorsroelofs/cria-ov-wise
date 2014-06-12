@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, '../client')));
 app.use(bodyParser());
 app.set('port', process.env.PORT || config.port);
 
+
 /**
  * Models
  */
@@ -48,9 +49,6 @@ route_files.forEach(function (file) {
         require(routes_path + '/' + file)(app);
     }
 });
-
-
-
 
 
 /**

@@ -181,21 +181,6 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
 
     };
 
-    startRoute = function() {
-
-        // Add a new routeLog record to the route with ID $routeParams.routeId
-        //var newRouteLog = travelerRouteDataService.routeData.save({}, );
-
-//        mentorsService.mentors.save({}, $scope.mentors.doc, function (res) {
-//            if (res.err === null) {
-//                $location.path('/mentors/' + res.doc._id);
-//            } else {
-//                $scope.save.createStatus = false;
-//            }
-//        });
-
-    };
-
     // Slide the section title
     $scope.handleSectionTitleClick = function($event) {
 

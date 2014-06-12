@@ -80,6 +80,7 @@ mentorApp.config(function($routeProvider) {
             templateUrl: 'pages/routes/detail.html',
             controller: 'routeController'
         })
+
         // Redirect to home
         .otherwise({
             redirectTo: '/'
@@ -91,10 +92,6 @@ mentorApp.config(function($routeProvider) {
 
 mentorApp.controller('mainController', function($scope) {
     $scope.helloMessage = 'Hello world!';
-});
-
-mentorApp.controller('testController', function($scope) {
-    $scope.testMessage = 'Testjee!';
 });
 
 mentorApp.controller('mentorController', function($scope, $http, $location, $routeParams, mentorsService) {
