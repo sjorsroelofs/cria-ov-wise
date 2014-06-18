@@ -18,6 +18,7 @@ var schemaName = Schema({
     facebookOauthToken: {type: String},
     twitterOauthToken: {type: String},
     registrationDate: {type: Date, default: Date.now},
+    specialColorProfile: {type:Boolean, default: false},
     badges: [badgeSchema],
     emergencyNumbers: [{
         name: {type: String, required: true},

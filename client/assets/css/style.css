@@ -637,3 +637,57 @@ div#footer ul li a.emergency {
     background: url('../images/warning-icon.png') no-repeat center 5px #f56e48;
     padding: 52px 0 0;
 }
+
+
+/**
+ * Special colors
+ */
+
+body.specialcolors {
+    background: #fff;
+}
+
+body.specialcolors a.logout {
+    background: #0000ff;
+    color: #ffd100;
+}
+
+body.specialcolors div#routes ul li a {
+    background-color: #0000ff;
+}
+
+body.specialcolors div#routes ul li a span {
+    background-color: #0000ff;
+    color: #ffd100;
+    font-size: 28px;
+}
+
+body.specialcolors div#footer ul li a {
+    background-color: #0000ff;
+    color: #ffd100;
+}
+
+body.specialcolors div#top-bar a.button-stop {
+    background-color: transparent;
+    color: #ffd100;
+}
+
+body.specialcolors div#top-bar {
+    background-color: #0000ff;
+    color: #ffd100;
+}
+
+body.specialcolors div#route-guide div.section.current div.section-title {
+    background-color: #ffd100;
+    color: #0000ff;
+    font-size: 20px;
+}
+
+body.specialcolors div#route-guide div.progress-bar {
+    background-color: #0000ff;
+    color: #ffd100;
+}
+
+body.specialcolors div#route-guide div.section div.section-title {
+    background-color: #0000ff;
+}

@@ -174,7 +174,8 @@ mentorApp.controller('travelerController', function($scope, $http, $location, $r
     $scope.addRoute = function () {
         var routeBlueprint = {
             name: "",
-            destination: ""
+            destination: "",
+            enabled: true
         };
 
         $scope.travelers.doc.routes.push(routeBlueprint);

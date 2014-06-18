@@ -48,6 +48,10 @@
                     <td>Twitter OAuth Token:</td>
                     <td><input type="text" data-ng-model="travelers.doc.twitterOauthToken"></td>
                 </tr>
+                <tr>
+                    <td>Aangepaste kleuren:</td>
+                    <td><input type="checkbox" data-ng-model="travelers.doc.specialColorProfile"></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -102,21 +106,21 @@
 
     <hr/>
 
-    <h4>Route logs:</h4>
-    <table data-ng-repeat="route in travelers.doc.routes" class="table">
-        <tbody>
-            <tr data-ng-repeat="log in route.routeLog">
-                <td>Route:</td>
-                <td><input type="text" data-ng-model="route.name"></td>
-                <td>Starttijd:</td>
-                <td><input type="text" data-ng-model="log.starttime"></td>
-                <td>Duur:</td>
-                <td><input type="text" data-ng-model="log.duration"></td>
-                <td>Voltooid?:</td>
-                <td><input type="text" data-ng-model="log.completed"></td>
-            </tr>
-        </tbody>
-    </table>
+    <!--<h4>Route logs:</h4>-->
+    <!--<table data-ng-repeat="route in travelers.doc.routes" class="table">-->
+        <!--<tbody>-->
+            <!--<tr data-ng-repeat="log in route.routeLog">-->
+                <!--<td>Route:</td>-->
+                <!--<td><input type="text" data-ng-model="route.name"></td>-->
+                <!--<td>Starttijd:</td>-->
+                <!--<td><input type="text" data-ng-model="log.starttime"></td>-->
+                <!--<td>Duur:</td>-->
+                <!--<td><input type="text" data-ng-model="log.duration"></td>-->
+                <!--<td>Voltooid?:</td>-->
+                <!--<td><input type="text" data-ng-model="log.completed"></td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
 
     <hr/>
 

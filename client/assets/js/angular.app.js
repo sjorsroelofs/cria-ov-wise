@@ -1,5 +1,13 @@
 var travelerApp = angular.module('travelerApp', ['ngRoute', 'travelerApp.services']);
 
+jQuery(document).ready(function() {
+
+    if(localStorage['specialColorProfile'] == 'true') {
+        jQuery('body').addClass('specialcolors');
+    }
+
+});
+
 travelerApp.config(function($routeProvider) {
     $routeProvider
 
@@ -65,6 +73,7 @@ travelerApp.controller('loginController', function($scope, $location, travelersV
             if(res.verified) {
                 localStorage['userVerified'] = true;
                 localStorage['userId'] = $scope.insert_userId;
+                localStorage['specialColorProfile'] = res.specialColorProfile|| false;
                 $location.path('/');
             } else {
                 localStorage['userVerified'] = false;
