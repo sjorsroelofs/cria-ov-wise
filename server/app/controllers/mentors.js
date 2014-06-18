@@ -24,7 +24,7 @@ exports.create = function(req, res) {
 
     });
 
-}
+};
 
 /**
  * Get all Mentors
@@ -53,7 +53,7 @@ exports.list = function(req, res) {
             return res.send(retObj);
         })
     ;
-}
+};
 
 
 /**
@@ -66,9 +66,9 @@ exports.detail = function(req, res) {
 
     console.log('GET Mentor with id. ' + req.params._id);
 
-    conditions = {_id: req.params._id}
-        , fields = {}
-        , options = {'registrationDate': -1};
+    conditions = {_id: req.params._id},
+    fields = {},
+    options = {'registrationDate': -1};
 
     Mentor
         .find(conditions, fields, options)
@@ -81,9 +81,8 @@ exports.detail = function(req, res) {
             };
 
             return res.send(retObj);
-
         })
-}
+};
 
 
 /**
@@ -92,38 +91,32 @@ exports.detail = function(req, res) {
  * @param res
  */
 exports.update = function(req, res) {
-
     console.log('Updating...');
-    console.log(req.body.doc.travelers);
 
-
-    var conditions =
-        {_id: req.params._id}
-        , update = {
-            firstname: req.body.doc.firstname || '',
-            lastname: req.body.doc.lastname || '',
-            username: req.body.doc.username || '',
-            email: req.body.doc.email || '',
-            password: req.body.doc.password || '',
-            phone: req.body.doc.phone || '',
-            travelers: req.body.doc.travelers || '',
-        }
-        , options = {multi: false}
-        , callback = function(err, doc) {
-
-            var retObj = {
-                meta: {"action": "update", 'timestamp': new Date(), filename: __filename},
-                doc: doc,
-                err: err
-            };
-
-            return res.send(retObj);
-
+    var conditions = {_id: req.params._id},
+    update = {
+        firstname: req.body.doc.firstname || '',
+        lastname: req.body.doc.lastname || '',
+        username: req.body.doc.username || '',
+        email: req.body.doc.email || '',
+        password: req.body.doc.password || '',
+        phone: req.body.doc.phone || '',
+        travelers: req.body.doc.travelers || ''
+    },
+    options = {multi: false},
+    callback = function(err, doc) {
+        var retObj = {
+            meta: {"action": "update", 'timestamp': new Date(), filename: __filename},
+            doc: doc,
+            err: err
         };
 
-    Mentor
-        .findOneAndUpdate(conditions, update, options, callback);
-}
+        return res.send(retObj);
+
+    };
+
+    Mentor.findOneAndUpdate(conditions, update, options, callback);
+};
 
 
 /**
@@ -136,8 +129,8 @@ exports.delete = function(req, res) {
 
     console.log('Deleting Mentor. ', req.params._id);
 
-    conditions = {_id: req.params._id}
-        , callback = function(err, doc) {
+    conditions = {_id: req.params._id},
+    callback = function(err, doc) {
 
         retObj = {
             meta: {"action": "delete", 'timestamp': new Date(), filename: __filename},
@@ -147,7 +140,7 @@ exports.delete = function(req, res) {
 
         return res.send(retObj);
 
-    }
+    };
 
     Mentor.remove(conditions, callback);
-}
+};

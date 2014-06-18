@@ -90,8 +90,12 @@ mentorApp.config(function($routeProvider) {
     
 });
 
-mentorApp.controller('mainController', function($scope) {
-    $scope.helloMessage = 'Hello world!';
+mentorApp.controller('mainController', function($scope, travelersService) {
+
+    $scope.travelers = travelersService.travelers.get({}, function() {
+        console.log($scope.travelers);
+    });
+
 });
 
 mentorApp.controller('mentorController', function($scope, $http, $location, $routeParams, mentorsService) {

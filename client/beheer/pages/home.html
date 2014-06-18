@@ -1,2 +1,10 @@
-<h1 ng-bind="helloMessage"></h1>
-<p class="lead">Welkom op de homepagina!</p>
+<h1 class="pageTitle">Kies een gebruiker</h1>
+<br/>
+<div class="row">
+
+    <div data-ng-repeat="traveler in travelers.doc" class="traveler col-sm-2">
+        <div class="traveler-image"><img src="http://dummyimage.com/193x130/000/fff" /></div>
+        <div class="traveler-name"><a href="/beheer/#/travelers/{{ traveler._id }}">{{ traveler.firstname }} {{ traveler.lastname}}</a></div>
+    </div>
+
+</div>

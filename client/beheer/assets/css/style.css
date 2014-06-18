@@ -5,3 +5,27 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+
+h1.pageTitle {
+    display: block;
+    margin: 40px 0 20px;
+    text-align: center;
+}
+
+div.traveler {
+    border: 1px solid #ddd;
+    margin: 0 10px;
+    padding: 0;
+}
+
+div.traveler div.traveler-image {
+    height: 130px;
+    background: #000;
+    margin: 0 0 10px;
+}
+
+div.traveler div.traveler-name {
+    font-size: 18px;
+    padding: 0 10px 8px;
+}
+
