@@ -1,7 +1,7 @@
 <!--<a class="logout" href="/#/logout">Uitloggen</a><br/>-->
 <div id="routes">
     <ul>
-        <li data-ng-repeat="route in traveler.doc.routes" class="{{ route.name }}">
+        <li data-ng-repeat="route in traveler.doc.routes" class="{{ route.name }}" ng-show="route.enabled">
             <a href="/#/travel/{{ route._id }}"><span>{{ route.name }}</span></a>
         </li>
     </ul>

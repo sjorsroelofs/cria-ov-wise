@@ -158,6 +158,7 @@ exports.update = function(req, res) {
     if(req.body.doc.emergencyNumbers) update.emergencyNumbers       = req.body.doc.emergencyNumbers;
     if(req.body.doc.routes) update.routes                           = req.body.doc.routes;
     if(req.body.doc.routeData) update.routeData                     = req.body.doc.routeData;
+    if(req.body.doc.enabled) update.enabled                         = req.body.doc.enabled;
 
     Traveler.findByIdAndUpdate(conditions, update, options, callback);
 };
