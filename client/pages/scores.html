@@ -2,18 +2,82 @@
     // Handle popup events for medal
     $(document).ready(function(){
 
-        // call open function popup-div when medal div is clicked
-        $('.medal1').click( function(){
-            openMedalPopup();
+        // Medal popup
+
+        $("body").click(function(event) {
+
+           if(event.target.className.split(" ")[2] =="medalClick" || event.target.className.split(" ")[0] =="medalClick")
+           {
+               $(".popup-box-content").replaceWith('<div class="popup-box-content-update">' +
+                       '<div class="popup-image-icon">' +
+                       '<img src="../assets/images/medal-medal-icon.png" width="50" height="60"/>' +
+                       '</div>' +
+                       '<h1>500 km medaille</h1>' +
+                       '<p>Je hebt 500 km afgelegd! gefeliciteerd! Je hebt daarom deze medaille verdient: de 500 km medaille! Deel hem met al je vrienden op Facebook of Twitter</p>' +
+                       '</div>');
+                openPopup();
+           }
+
+           if(event.target.className.split(" ")[1] == "shareFacebook" || event.target.className.split(" ")[0] =="shareFacebook")
+           {
+                $(".popup-box-content").replaceWith('<div class="popup-box-content-update">' +
+                    '<div class="top-share-navigation">'+
+                    '<div class="top-title"><h1>Facebook</h1></div>' +
+                    '<div class="top-post"><h1><a>Delen</a></h1></div>' +
+                    '</div>' +
+                    '<div class="content-share">' +
+                        '<div class="popup-image-icon">' +
+                        '<img src="../assets/images/medal-medal-icon.png" width="50" height="60"/>' +
+                    '</div>' +
+                    '<h1>500 km medaille</h1>' +
+                    '<p>Klik rechtsboven op delen om deze medaille op Facebook te delen.</p>' +
+                    '</div>'
+                );
+                openPopup();
+            }
+
+            if(event.target.className.split(" ")[1] == "shareTwitter" || event.target.className.split(" ")[0] =="shareTwitter")
+            {
+                $(".popup-box-content").replaceWith('<div class="popup-box-content-update">' +
+                                '<div class="top-share-navigation">'+
+                                '<div class="top-title"><h1>Twitter</h1></div>' +
+                                '<div class="top-post"><h1><a>Delen</a></h1></div>' +
+                                '</div>' +
+                                '<div class="content-share">' +
+                                '<div class="popup-image-icon">' +
+                                '<img src="../assets/images/medal-medal-icon.png" width="50" height="60"/>' +
+                                '</div>' +
+                                '<h1>500 km medaille</h1>' +
+                                '<p>Klik rechtsboven op delen om deze medaille op Twitter te delen.</p>' +
+                                '</div>'
+                );
+                openPopup();
+            }
+
+            if(event.target.className.split(" ")[2] =="starClick" || event.target.className.split(" ")[0] =="starClick")
+            {
+                $(".popup-box-content").replaceWith('<div class="popup-box-content-update">' +
+                        '<div class="popup-image-icon">' +
+                        '<img src="../assets/images/medal-star-icon.png" width="50" height="60"/>' +
+                        '</div>' +
+                        '<h1>25x zelfstandig gereisd!</h1>' +
+                        '<p>Je bent 25 keer zelfstandig met het openbaar vervoer gereisd! Je hebt daarom deze medaille verdient: de 25x zelfstandig reizen medaile! Deel hem met al je vrienden op Facebook of Twitter</p>' +
+                        '</div>');
+                openPopup();
+            }
+
         });
 
-        // call close function popup-div when close div is clicked
-        $('.close-popup-box').click(function(){
-            closeMedalPopup();
+
+
+        // close the medal-popup div
+        $('#globaldiv').click( function(e) {
+            closePopup();
+            $(".popup-box-content-update").replaceWith('<div class="popup-box-content"></div>');
         });
 
         // open medal popup-div function
-        function openMedalPopup() {
+        function openPopup() {
             $('.popup-box').fadeIn("slow");
             $('#score-stats-outside-wrapper').css({
                 "opacity": "0.3" //aanpassen
@@ -21,8 +85,8 @@
         }
 
         // close medal popup-div function
-        function closeMedalPopup() {
-            $('.popup-box').fadeOut("slow");
+        function closePopup() {
+            $('.popup-box').fadeOut("fast");
             $('#score-stats-outside-wrapper').css({
                 "opacity": "1" //aanpassen
             });
@@ -33,21 +97,33 @@
     <a href="/#/" class="button-stop">Terug</a>
     <span class="destination">Mijn Score</span>
 </div>
+<div id="globaldiv">
 <div class="popup-box">
-    <span class="image-bg"><img src="../assets/images/medal-medal-icon.png" width="50" height="60"/></span>
-    <h1>500 km medaille</h1>
-    <p>Je hebt 500 km afgelegd! gefeliciteerd! Je hebt daarom deze medaille verdient: de 500 km medaille! Deel hem met al je vrienden op Facebook of Twitter</p>
-    <a class="close-popup-box button-stop">Terug</a>
+    <div class="popup-box-content">
+    </div>
+</div>
+<div class="popup-box-share">
+    <div class="top-share-navigation">
+        <div class="top-title"><h1>Facebook</h1></div>
+        <div class="top-post"><h1><a>Delen</a></h1></div>
+    </div>
+    <div class="content-share">
+        <div class="popup-image-icon">
+            <img src="../assets/images/medal-medal-icon.png" width="50" height="60"/>
+        </div>
+        <h1>500 km medaille</h1>
+        <p>Klik rechtsboven op delen om deze medaille op Facebook te delen.</p>
+    </div>
 </div>
 <div id="score-stats-outside-wrapper">
     <div id="score-stats-inside-wrapper">
         <h1>{{traveler.doc.firstname}} {{traveler.doc.lastname}}</h1>
         <div id="score-stats-inside-wrapper-left">
-            <p>
+            <p class="time-traveled-title-left">
                 Tijd<br />
                 gereisd:
             </p>
-            <p>
+            <p class="time-traveled-value-left">
                 12 uur en <br/>
                 16 minuten
             </p>
@@ -61,11 +137,11 @@
             </div>
         </div>
         <div id="score-stats-inside-wrapper-right">
-            <p>
+            <p class="time-traveled-title-right">
                 Aantal<br />
                 kilometers:
             </p>
-            <p>
+            <p class="time-traveled-value-right">
                 514 kilometer
             </p>
         </div>
@@ -73,18 +149,18 @@
         <!-- data-ng-model Data ophalen uit dB -->
     </div>
     <div id="received-medals">
-        <h1>Behaalde medailles</h1>
+        <h1>Behaalde medailles:</h1>
         <div class="medal-bg-wrapper-green">
-            <a class="first-medal-icon medal1"><img src="../assets/images/medal-medal-icon.png" width="50" height="60"/></a>
-        </div>
-        <div class="medal-bg-wrapper-blue">
-            <a href="#"><img src="../assets/images/medal-star-icon.png" width="50" height="60"/></a>
+            <a class="first-medal-icon medal1 medalClick"><img src="../assets/images/medal-medal-icon.png" width="50" height="60" class="medalClick"/></a>
         </div>
         <div class="medal-bg-wrapper-green">
-            <a href="#"><img src="../assets/images/medal-medal-icon.png" width="50" height="60"/></a>
+            <a class="starClick"><img src="../assets/images/medal-star-icon.png" width="50" height="60" class="starClick"/></a>
         </div>
-        <div class="medal-bg-wrapper-blue">
-            <a class="last-medal-icon" href="#"><img src="../assets/images/medal-cup-icon.png" width="50" height="60"/></a>
+        <div class="medal-bg-wrapper-green">
+            <a class="medalClick"><img src="../assets/images/medal-medal-icon.png" width="50" height="60" class="medalClick"/></a>
+        </div>
+        <div class="medal-bg-wrapper-green">
+            <a class="last-medal-icon starClick"><img src="../assets/images/medal-star-icon.png" width="50" height="60" class="starClick"/></a>
         </div>
         <div style="clear:both;"></div><!-- quick solution for solving bg-img problem (clearfix) -->
     </div>
@@ -92,15 +168,23 @@
         <h2>Delen!</h2>
         <div class="share-icon">
             <div class="share-bg-wrapper-blue">
-                <a class="first-share-icon" href="#"><img src="../assets/images/facebook-icon.png" width="50" height="60" href="#"/><!--<br />Facebook--></a>
+                <a class="first-share-icon shareFacebook"><img src="../assets/images/facebook-icon.png" width="50" height="60" class="shareFacebook"/><!--<br />Facebook--></a>
             </div>
             <div class="share-bg-wrapper-blue">
-                <a href="#"><img src="../assets/images/twitter-icon.png" width="50" height="60" href="#"/><!--<br />Twitter--></a>
+                <a class="shareTwitter"><img src="../assets/images/twitter-icon.png" width="50" height="60" class="shareTwitter"/><!--<br />Twitter--></a>
+            </div>
+        </div>
+        <div class="share-txt">
+            <div class="share-facebook">
+                <a class="shareFacebook">Facebook</a>
+            </div>
+            <div class="share-twitter">
+                <a class="shareTwitter">Twitter</a>
             </div>
         </div>
     </div>
 </div>
-
+</div>
 <div id="footer">
     <ul>
         <li><a href="#" class="speech">Spraak</a></li>

@@ -46,6 +46,11 @@ travelerApp.config(function($routeProvider) {
             controller: 'scoresController'
         })
 
+        .when('/endtripscore', {
+            templateUrl: 'pages/endtripscore.html',
+            controller: 'scoresController'
+        })
+
         // Redirect to home
         .otherwise({
             redirectTo: '/'
@@ -253,7 +258,7 @@ travelerApp.controller('travelController', function($scope, $routeParams, $locat
     // Finish the route
     finish = function() {
         //alert('Finished!');
-        $location.path("/scores");
+        $location.path("/endtripscore");
     };
 
     // Save the GPS location
@@ -304,6 +309,7 @@ travelerApp.controller('scoresController', function($scope, $location, travelers
         console.log($scope.traveler);
     });
 });
+
 
 /**
  * Check if the user is verified. If not, redirect to the login page
