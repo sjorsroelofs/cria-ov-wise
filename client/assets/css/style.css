@@ -158,7 +158,7 @@ div#routes ul li.scores a {
 */
 
 div#help {
-    margin-top:57px;
+    margin-top: 90px;
 }
 
 h1.nood {
@@ -170,7 +170,7 @@ h1.nood {
 
 div#help ul li a {
     display: block;
-    padding: 45px 0 45px 130px;
+    padding: 45px 0 45px 90px;
     font-size: 25px;
     text-decoration: none;
     text-align: left;
@@ -186,7 +186,7 @@ div#help ul li {
 div#help ul li.Mama,
 div#help ul li.Papa,
 div#help ul li.Begeleider {
-    background: url('../images/phone-icon.png') no-repeat 40px 30px #50aae5;
+    background: url('../images/phone-icon.png') no-repeat 25px 30px #50aae5;
 }
 
 div#help ul li.Mama a {
@@ -609,19 +609,14 @@ div#route-guide div.section.finished div.section-title {
     opacity: 1;
 }
 
-div#route-guide div.section.finished div.section-title {
-    display: none;
-}
-
 div#route-guide div.section div.section-title {
     background-color: #3199d5;
     color: #fff;
-    font-size: 0.9em;
+    font-size: 1.4em;
     padding: 15px 15px 15px 65px;
     cursor: pointer;
     -webkit-box-shadow: 0 0 5px 0 #000;
     box-shadow: 0 0 5px 0 #000;
-    opacity: 0.4;
 }
 
 div#route-guide div.section.walking div.section-title {
@@ -638,15 +633,11 @@ div#route-guide div.section.train div.section-title {
 
 div#route-guide div.section.current div.section-title {
     background-color: #4fa7d9;
-    font-size: 1.2em;
+    font-size: 1.6em;
 }
 
 div#route-guide div.section.finished div.section-title {
     background-color: #47a447;
-}
-
-div#route-guide div.section div.section-steps {
-
 }
 
 div#route-guide div.section.closed div.section-steps {
@@ -684,11 +675,20 @@ div#route-guide div.progress-bar div.inner {
     background: url('../images/arrow-icon.png') no-repeat 15px center transparent;
 }
 
+div#route-guide div.section.walking div.progress-bar div.inner {
+    background: url('../images/arrow-icon-walking.png') no-repeat 15px center transparent;
+}
+
+div#route-guide div.section.bus div.progress-bar div.inner {
+    background: url('../images/arrow-icon-bus.png') no-repeat 15px center transparent;
+}
+
 div#route-guide div.progress-bar div.second-inner {
     height: 60px;
     /*padding: 10px 0;*/
     margin: 0 15px 0 0;
-    background: url('../images/finish-icon.png') no-repeat right center transparent;
+    /*background: url('../images/finish-icon.png') no-repeat right center transparent;*/
+    background: url('../images/arrow-icon.png') no-repeat right center transparent;
 }
 
 div#route-guide div.progress-bar div.directions {
@@ -720,6 +720,7 @@ div#route-guide div.step-ticker div.arrow {
 div#route-guide div.step-ticker div.inner {
     position: relative;
     overflow: auto;
+    width: 1553px;
     left: 50%;
     margin-left: -105px;
 }
@@ -778,6 +779,7 @@ div#route-guide div.step-ticker div.step.step5 {
  */
 div#footer {
     position: fixed;
+    -webkit-backface-visibility: hidden;
     width: 100%;
     max-width: 600px;
     bottom: 0;

@@ -96,6 +96,7 @@ travelerApp.controller('logoutController', function($scope, $location) {
 
     localStorage['userVerified'] = false;
     localStorage['userId'] = -1;
+    localStorage['specialColorProfile'] = false;
     $location.path("/");
 
 });
