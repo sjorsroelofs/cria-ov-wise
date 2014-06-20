@@ -5,7 +5,7 @@
 
 <div id="help">
     <ul>
-        <li data-ng-repeat="number in traveler.doc.emergencyNumbers" class="{{ number.name }}" ><a href="tel:{{ number.number }}">Bel {{ number.name }}</a></li>
+        <li data-ng-repeat="number in traveler.doc.emergencyNumbers" class="{{ number.name }}" ><a href="tel:{{ number.number }}">{{ number.name }}</a></li>
     </ul>
 </div>
 <div id="footer">
