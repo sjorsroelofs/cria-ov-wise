@@ -409,12 +409,12 @@ p.time-traveled-value-right {
     }
 
     div#score-stats-inside-wrapper-left {
-        margin-top:100px;
+        margin-top:110px;
         font-size:13px;
     }
 
     div#score-stats-inside-wrapper-right {
-        margin-top:100px;
+        margin-top:110px;
         font-size:13px;
     }
 
@@ -874,6 +874,66 @@ body.specialcolors div#route-guide div.section div.section-title {
     background-color: #0000ff;
 }
 
+body.specialcolors div#help ul li.Mama,
+body.specialcolors div#help ul li.Papa,
+body.specialcolors div#help ul li.Begeleider {
+    background:#0000ff url('../images/phone-icon-yellow.png') no-repeat 25px 30px ;
+    background-image:;
+}
+
+body.specialcolors div#help ul li.Mama a,
+body.specialcolors div#help ul li.Papa a,
+body.specialcolors div#help ul li.Begeleider a {
+    color:#ffd100;
+}
+
+body.specialcolors div#footer {
+    border-top:1px solid black;
+}
+body.specialcolors div#score-stats-outside-wrapper {
+    background:url('../images/yellow-bg2.png') repeat-x top left;
+}
+body.specialcolors div#middle-circle {
+    background-color:#0000ff;
+}
+
+body.specialcolors div#middle-circle p {
+    color: #ffd100;
+}
+
+body.specialcolors div#score-stats-inside-wrapper {
+    color:#0000ff;
+}
+
+body.specialcolors div#received-medals,
+body.specialcolors div#share-medals {
+    color:#0000ff;
+}
+
+body.specialcolors .medal-bg-wrapper-green a,
+body.specialcolors .share-bg-wrapper-blue a{
+    background-color:#0000ff;
+}
+
+body.specialcolors .back {
+    background-color:#0000ff;
+}
+
+body.specialcolors div#score-stats-outside-wrapper-2 {
+    background:url('../images/yellow-bg.png') repeat-x top left;
+}
+
+body.specialcolors .popup-box {
+    background:#ffd100;
+}
+
+body.specialcolors .popup-box .popup-image-icon {
+    background-color:#0000ff;
+}
+
+body.specialcolors .top-share-navigation .top-post h1 a {
+    color:#0000ff;
+}
 body.specialcolors div#routes ul li.Huis a {
     background-image: url('../images/house-icon-yellow.png');
 }
