@@ -873,3 +873,35 @@ body.specialcolors div#route-guide div.progress-bar {
 body.specialcolors div#route-guide div.section div.section-title {
     background-color: #0000ff;
 }
+
+body.specialcolors div#routes ul li.Huis a {
+    background-image: url('../images/house-icon-yellow.png');
+}
+
+body.specialcolors div#routes ul li.School a {
+    background-image: url('../images/school-icon2-yellow.png');
+}
+
+body.specialcolors div#routes ul li.Werk a {
+    background-image: url('../images/work-icon2-yellow.png');
+}
+
+body.specialcolors div#routes ul li.Truus a {
+    background-image: url('../images/woman-2-icon-yellow.png');
+}
+
+body.specialcolors div#routes ul li.Oma a {
+    background-image: url('../images/woman-icon-yellow.png');
+}
+
+body.specialcolors div#routes ul li.scores a {
+    background-image: url('../images/cup-icon-yellow.png');
+}
+
+body.specialcolors div#footer ul li a.speech {
+    background-image: url('../images/speech-icon-yellow.png');
+}
+
+body.specialcolors div#footer ul li a.emergency {
+    background-image: url('../images/warning-icon-yellow.png');
+}
